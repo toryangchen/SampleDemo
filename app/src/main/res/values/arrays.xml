@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tab_titles">
+        <item>热门电影</item>
+        <item>top250</item>
+        <item>即将上映</item>
+        <item>北美票房</item>
+    </string-array>
+</resources>
