@@ -11,6 +11,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 import okio.BufferedSink;
 import okio.GzipSink;
 import okio.Okio;
@@ -25,14 +26,13 @@ public class InitRetrofit {
 
     static Log log = Log.YLog();
 
-    static OkHttpClient client = new OkHttpClient();
+    private static OkHttpClient client = new OkHttpClient
+            .Builder()
+            .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(new GzipRequsetInterceptor())
+            .build();
 
-    static {
-        client.interceptors().add(new LoggingIntercepter());
-        client.interceptors().add(new GzipRequsetInterceptor());
-    }
-
-    public static Retrofit retrofit = new Retrofit.Builder()
+    private static Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(IPAddress.url)
             .client(client)
             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -54,7 +54,7 @@ public class InitRetrofit {
             long t2 = System.nanoTime();
             log.d(String.format("Received response for %s in %.1fms%n%s",
                     response.request().url(),(t2-t1)/1e6d, response.headers()));
-            return null;
+            return response;
         }
     }
 
@@ -78,6 +78,7 @@ public class InitRetrofit {
             return new RequestBody() {
                 @Override
                 public MediaType contentType() {
+                    log.d("gzip!");
                     return body.contentType();
                 }
 

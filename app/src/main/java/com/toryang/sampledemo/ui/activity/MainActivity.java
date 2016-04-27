@@ -15,10 +15,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.toryang.sampledemo.R;
-import com.toryang.sampledemo.ui.adapter.ViewpagerAdapter;
 import com.toryang.sampledemo.ui.BaseActivity;
+import com.toryang.sampledemo.ui.adapter.ViewpagerAdapter;
 import com.toryang.sampledemo.ui.fragment.HotMovieFragment;
 
+import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -32,6 +33,8 @@ public class MainActivity extends BaseActivity
     @BindView(R.id.drawer_layout)DrawerLayout drawer;
     @BindView(R.id.nav_view)NavigationView navigationView;
 
+    @BindArray(R.array.tab_titles)String[] strs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +43,6 @@ public class MainActivity extends BaseActivity
         operateView();
     }
 
-    @Override
     public void operateView() {
         setSupportActionBar(toolbar);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +68,7 @@ public class MainActivity extends BaseActivity
     }
 
     private void setUpViewPager(ViewPager viewPager){
-        String[] strs = getResources().getStringArray(R.array.tab_titles);
+//        String[] strs = getResources().getStringArray(R.array.tab_titles);
         ViewpagerAdapter adapter = new ViewpagerAdapter(getSupportFragmentManager());
         adapter.addFragments(new HotMovieFragment(),strs[0]);
         adapter.addFragments(new HotMovieFragment(),strs[1]);

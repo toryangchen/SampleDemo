@@ -9,8 +9,10 @@ import android.view.ViewGroup;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.IconHintView;
 import com.toryang.sampledemo.R;
+import com.toryang.sampledemo.presenter.HotMoviePresenterImpl;
 import com.toryang.sampledemo.ui.adapter.LoopAdapter;
 import com.toryang.sampledemo.ui.BaseFragment;
+import com.toryang.sampledemo.ui.view.DataView;
 import com.toryang.sampledemo.ui.view.IhotView;
 
 import butterknife.BindView;
@@ -19,9 +21,19 @@ import butterknife.ButterKnife;
 /**
  * Created by toryang on 16/4/26.
  */
-public class HotMovieFragment extends BaseFragment implements IhotView {
+public class HotMovieFragment extends BaseFragment implements DataView{
 
     @BindView(R.id.roll_view_pager)RollPagerView mRollViewPager;
+
+    private HotMoviePresenterImpl presenter;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        presenter = new HotMoviePresenterImpl();
+        presenter.attachView(this);
+        presenter.loadHotMovie();
+    }
 
     @Nullable
     @Override
@@ -32,7 +44,6 @@ public class HotMovieFragment extends BaseFragment implements IhotView {
         return view;
     }
 
-    @Override
     public void operateView() {
         mRollViewPager.setPlayDelay(1000);
         mRollViewPager.setAnimationDurtion(500);
@@ -40,18 +51,14 @@ public class HotMovieFragment extends BaseFragment implements IhotView {
         mRollViewPager.setHintView(new IconHintView(getContext(),R.drawable.point_focus,R.drawable.point_normal));
     }
 
+
     @Override
-    public void showProgress() {
+    public void refresh() {
 
     }
 
     @Override
-    public void cancelProgress() {
-
-    }
-
-    @Override
-    public void setView() {
+    public void loadMore() {
 
     }
 }

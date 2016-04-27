@@ -7,17 +7,41 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.toryang.sampledemo.ui.view.MvpView;
+
 /**
  * Created by toryang on 16/4/26.
  */
-public abstract class BaseFragment extends Fragment {
+public class BaseFragment extends Fragment implements MvpView {
 
-    @Nullable
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+    public void showLoading(String msg) {
+
     }
 
-    public abstract void operateView();
+    @Override
+    public void hideLoading() {
 
+    }
+
+    @Override
+    public void showError(String msg, View.OnClickListener onClickListener) {
+
+    }
+
+    @Override
+    public void showEmpty(String msg, View.OnClickListener onClickListener) {
+
+    }
+
+    @Override
+    public void showEmpty(String msg, View.OnClickListener onClickListener, int imagId) {
+
+    }
+
+    @Override
+    public void showNetError(View.OnClickListener onClickListener) {
+
+    }
 }
