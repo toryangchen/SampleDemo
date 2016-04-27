@@ -1,21 +1,26 @@
 package com.toryang.sampledemo.presenter;
 
-import android.net.NetworkRequest;
-import android.support.annotation.MainThread;
 
+import android.content.Context;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.toryang.sampledemo.api.InitRetrofit;
 import com.toryang.sampledemo.api.NetService;
-import com.toryang.sampledemo.model.HotMovieModel;
-import com.toryang.sampledemo.model.HotMovieModelImpl;
+import com.toryang.sampledemo.config.IPAddress;
 import com.toryang.sampledemo.ui.view.DataView;
-import com.toryang.sampledemo.ui.view.IhotView;
 import com.toryang.sampledemo.utils.Log;
 
+import org.json.JSONObject;
+
 import rx.Observer;
-import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
-import rx.subjects.Subject;
 
 /**
  * Created by toryang on 16/4/26.
@@ -23,6 +28,11 @@ import rx.subjects.Subject;
 public class HotMoviePresenterImpl extends BasePresenter<DataView>{
 
     Log log = Log.YLog();
+    Context context;
+
+    public HotMoviePresenterImpl(Context context){
+        this.context = context;
+    }
 
     @Override
     public void attachView(DataView mvpView) {
@@ -58,5 +68,37 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
                         log.d(o.toString());
                     }
                 });
+    }
+
+    public void loadHotMovieWithVolley(){
+
+        RequestQueue mQueue = Volley.newRequestQueue(context);
+        StringRequest request = new StringRequest("http://www.baidu.com", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                log.d(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                log.e(error);
+            }
+        });
+
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(IPAddress.totalUrl, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        log.d(response.toString());
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                log.e(error);
+            }
+        });
+        mQueue.add(request);
+        mQueue.add(jsonObjectRequest);
     }
 }

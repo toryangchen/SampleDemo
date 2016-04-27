@@ -5,7 +5,10 @@ package com.toryang.sampledemo.config;
  */
 public class IPAddress {
 
-    public static final String url = "https://api.douban.com/";
+    public static final String url = "https://api.douban.com";
+
+
+    public static final String totalUrl = "https://api.douban.com/v2/movie/us_box";
 
 
 }

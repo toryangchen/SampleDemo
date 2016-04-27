@@ -30,9 +30,10 @@ public class HotMovieFragment extends BaseFragment implements DataView{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = new HotMoviePresenterImpl();
+        presenter = new HotMoviePresenterImpl(getActivity());
         presenter.attachView(this);
-        presenter.loadHotMovie();
+//        presenter.loadHotMovie();
+        presenter.loadHotMovieWithVolley();
     }
 
     @Nullable

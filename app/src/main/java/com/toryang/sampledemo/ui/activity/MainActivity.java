@@ -18,6 +18,7 @@ import com.toryang.sampledemo.R;
 import com.toryang.sampledemo.ui.BaseActivity;
 import com.toryang.sampledemo.ui.adapter.ViewpagerAdapter;
 import com.toryang.sampledemo.ui.fragment.HotMovieFragment;
+import com.toryang.sampledemo.ui.fragment.TopMovFragment;
 
 import butterknife.BindArray;
 import butterknife.BindView;
@@ -71,7 +72,7 @@ public class MainActivity extends BaseActivity
 //        String[] strs = getResources().getStringArray(R.array.tab_titles);
         ViewpagerAdapter adapter = new ViewpagerAdapter(getSupportFragmentManager());
         adapter.addFragments(new HotMovieFragment(),strs[0]);
-        adapter.addFragments(new HotMovieFragment(),strs[1]);
+        adapter.addFragments(new TopMovFragment(),strs[1]);
         viewPager.setAdapter(adapter);
     }
 
