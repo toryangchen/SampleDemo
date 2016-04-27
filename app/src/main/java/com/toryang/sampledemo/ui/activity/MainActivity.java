@@ -1,4 +1,4 @@
-package com.toryang.sampledemo.view.activity;
+package com.toryang.sampledemo.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,9 +15,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.toryang.sampledemo.R;
-import com.toryang.sampledemo.adapter.ViewpagerAdapter;
-import com.toryang.sampledemo.base.BaseActivity;
-import com.toryang.sampledemo.view.fragment.HotMovieFragment;
+import com.toryang.sampledemo.ui.adapter.ViewpagerAdapter;
+import com.toryang.sampledemo.ui.BaseActivity;
+import com.toryang.sampledemo.ui.fragment.HotMovieFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +29,8 @@ public class MainActivity extends BaseActivity
     @BindView(R.id.fab)FloatingActionButton fab;
     @BindView(R.id.viewpager_tab)ViewPager mViewpagerTab;
     @BindView(R.id.tab_top)TabLayout mTabTop;
+    @BindView(R.id.drawer_layout)DrawerLayout drawer;
+    @BindView(R.id.nav_view)NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +51,11 @@ public class MainActivity extends BaseActivity
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         if (mViewpagerTab != null){
@@ -75,7 +75,6 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -126,8 +125,6 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.nav_send) {
 
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

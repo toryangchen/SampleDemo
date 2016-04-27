@@ -1,4 +1,4 @@
-package com.toryang.sampledemo.model.service;
+package com.toryang.sampledemo.api;
 
 import retrofit2.http.GET;
 import rx.Observable;

@@ -1,4 +1,4 @@
-package com.toryang.sampledemo.base;
+package com.toryang.sampledemo.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

@@ -2,7 +2,7 @@ package com.toryang.sampledemo.presenter;
 
 import com.toryang.sampledemo.model.HotMovieModel;
 import com.toryang.sampledemo.model.HotMovieModelImpl;
-import com.toryang.sampledemo.view.IhotView;
+import com.toryang.sampledemo.ui.view.IhotView;
 
 /**
  * Created by toryang on 16/4/26.

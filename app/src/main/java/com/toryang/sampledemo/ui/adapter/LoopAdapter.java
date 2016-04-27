@@ -1,4 +1,4 @@
-package com.toryang.sampledemo.adapter;
+package com.toryang.sampledemo.ui.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;

@@ -1,4 +1,4 @@
-package com.toryang.sampledemo.view.fragment;
+package com.toryang.sampledemo.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.IconHintView;
 import com.toryang.sampledemo.R;
-import com.toryang.sampledemo.adapter.LoopAdapter;
-import com.toryang.sampledemo.base.BaseFragment;
-import com.toryang.sampledemo.view.IhotView;
+import com.toryang.sampledemo.ui.adapter.LoopAdapter;
+import com.toryang.sampledemo.ui.BaseFragment;
+import com.toryang.sampledemo.ui.view.IhotView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

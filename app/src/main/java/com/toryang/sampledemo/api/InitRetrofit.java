@@ -1,4 +1,4 @@
-package com.toryang.sampledemo.model.service;
+package com.toryang.sampledemo.api;
 
 import com.toryang.sampledemo.config.IPAddress;
 import com.toryang.sampledemo.utils.Log;

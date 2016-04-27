@@ -1,4 +1,4 @@
-package com.toryang.sampledemo.view;
+package com.toryang.sampledemo.ui.view;
 
 /**
  * Created by toryang on 16/4/26.
