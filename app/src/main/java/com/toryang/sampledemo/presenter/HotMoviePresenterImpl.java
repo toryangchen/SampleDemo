@@ -13,6 +13,7 @@ import com.android.volley.toolbox.Volley;
 import com.toryang.sampledemo.api.InitRetrofit;
 import com.toryang.sampledemo.api.NetService;
 import com.toryang.sampledemo.config.IPAddress;
+import com.toryang.sampledemo.model.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.ui.view.DataView;
 import com.toryang.sampledemo.utils.Log;
 
@@ -50,7 +51,7 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
                 .getHotMovie()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Object>() {
+                .subscribe(new Observer<UsBoxEntity>() {
                     @Override
                     public void onCompleted() {
                         log.d("finished");
@@ -59,13 +60,13 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
                     @Override
                     public void onError(Throwable e) {
                         getMvpView().showError(null,null);
-                        log.e(e.getStackTrace());
+                        log.e(e.toString());
                     }
 
                     @Override
-                    public void onNext(Object o) {
-                        getMvpView().loadMore();
-                        log.d(o.toString());
+                    public void onNext(UsBoxEntity usBoxEntity) {
+                        getMvpView().loadMore(usBoxEntity);
+                        log.d(usBoxEntity.getTitle()+"");
                     }
                 });
     }

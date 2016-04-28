@@ -9,11 +9,13 @@ import android.view.ViewGroup;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.IconHintView;
 import com.toryang.sampledemo.R;
+import com.toryang.sampledemo.model.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.presenter.HotMoviePresenterImpl;
 import com.toryang.sampledemo.ui.adapter.LoopAdapter;
 import com.toryang.sampledemo.ui.BaseFragment;
 import com.toryang.sampledemo.ui.view.DataView;
 import com.toryang.sampledemo.ui.view.IhotView;
+import com.toryang.sampledemo.utils.Log;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,13 +29,14 @@ public class HotMovieFragment extends BaseFragment implements DataView{
 
     private HotMoviePresenterImpl presenter;
 
+    Log log = Log.YLog();
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter = new HotMoviePresenterImpl(getActivity());
         presenter.attachView(this);
-//        presenter.loadHotMovie();
-        presenter.loadHotMovieWithVolley();
+        presenter.loadHotMovie();
+//        presenter.loadHotMovieWithVolley();
     }
 
     @Nullable
@@ -53,13 +56,19 @@ public class HotMovieFragment extends BaseFragment implements DataView{
     }
 
 
+    /**
+     * Presenter 的回调接口，用于更新UI
+     *
+     */
+
     @Override
-    public void refresh() {
+    public void refresh(UsBoxEntity usBoxEntity) {
+
 
     }
 
     @Override
-    public void loadMore() {
-
+    public void loadMore(UsBoxEntity usBoxEntity) {
+        log.d(usBoxEntity.getTitle());
     }
 }
