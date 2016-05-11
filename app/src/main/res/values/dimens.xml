@@ -6,4 +6,17 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="movie_intro">18sp</dimen>
+    <dimen name="movie_more">14sp</dimen>
+    <dimen name="movie_name">16sp</dimen>
+
+    <dimen name="movie_introduce_height">280dp</dimen>
+
+    <dimen name="movie_padding">20dp</dimen>
+
+    <dimen name="card_margin">10dp</dimen>
+
+    <dimen name="movie_pic_height">140dp</dimen>
+    <dimen name="movie_pic_width">100dp</dimen>
 </resources>
