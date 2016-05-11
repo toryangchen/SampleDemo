@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.IconHintView;
@@ -26,8 +28,10 @@ import butterknife.ButterKnife;
 public class HotMovieFragment extends BaseFragment implements DataView{
 
     @BindView(R.id.roll_view_pager)RollPagerView mRollViewPager;
+    @BindView(R.id.container)LinearLayout mContainer;
 
     private HotMoviePresenterImpl presenter;
+    private View hotMovie, recentMovie, usBox;
 
     Log log = Log.YLog();
     @Override
@@ -53,6 +57,13 @@ public class HotMovieFragment extends BaseFragment implements DataView{
         mRollViewPager.setAnimationDurtion(500);
         mRollViewPager.setAdapter(new LoopAdapter(mRollViewPager));
         mRollViewPager.setHintView(new IconHintView(getContext(),R.drawable.point_focus,R.drawable.point_normal));
+
+        hotMovie = mContainer.findViewById(R.id.include_hot);
+        recentMovie = mContainer.findViewById(R.id.include_recent);
+        usBox = mContainer.findViewById(R.id.include_usbox);
+
+//        ((TextView)(hotMovie.findViewById(R.id.tv_hotmovie))).setText();
+
     }
 
 

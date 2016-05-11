@@ -8,7 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/container">
 
         <com.jude.rollviewpager.RollPagerView
             android:id="@+id/roll_view_pager"
@@ -16,10 +17,14 @@
             android:layout_height="180dp"
             app:rollviewpager_play_delay="3000"/>
 
+        <include layout="@layout/menu_movie"
+            android:id="@+id/include_hot"/>
 
-        <include layout="@layout/menu_movie"/>
+        <include layout="@layout/menu_movie"
+            android:id="@+id/include_recent"/>
 
-        <include layout="@layout/menu_movie"/>
+        <include layout="@layout/menu_movie"
+            android:id="@+id/include_usbox"/>
 
     </LinearLayout>
 
