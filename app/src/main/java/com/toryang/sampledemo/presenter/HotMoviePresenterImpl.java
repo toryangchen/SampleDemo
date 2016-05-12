@@ -27,9 +27,14 @@ import rx.schedulers.Schedulers;
  */
 public class HotMoviePresenterImpl extends BasePresenter<DataView>{
 
+    private boolean USBOX_FINISHED = false;
+    private boolean HOTMO_FINISHED = false;
+    private boolean RECENT_FINISHED = false;
+
     Log log = Log.YLog();
     Context context;
 
+    UsBoxEntity entity;
     public HotMoviePresenterImpl(Context context){
         this.context = context;
     }
@@ -44,8 +49,71 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
         super.detachView();
     }
 
-    public void loadHotMovie(){
+    public void loadData(){
+        loadHotMovie();
+        loadUsBox();
+        recentMovie();
+    }
 
+    public void loadHotMovie(){
+        InitRetrofit.createApi(NetService.class)
+                .getHotMovie()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<UsBoxEntity>() {
+                    @Override
+                    public void onCompleted() {
+                        HOTMO_FINISHED = true;
+                        log.d("finished");
+                        update();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        getMvpView().showError(null,null);
+                        HOTMO_FINISHED = true;
+                        log.e(e.toString());
+                    }
+
+                    @Override
+                    public void onNext(UsBoxEntity usBoxEntity) {
+                        entity = usBoxEntity;
+                        log.d(usBoxEntity.getTitle()+"");
+                    }
+                });
+    }
+
+    public void loadUsBox(){
+        InitRetrofit.createApi(NetService.class)
+                .getHotMovie()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<UsBoxEntity>() {
+                    @Override
+                    public void onCompleted() {
+                        USBOX_FINISHED = true;
+                        log.d("finished");
+                        update();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        getMvpView().showError(null,null);
+                        USBOX_FINISHED = true;
+                        log.e(e.toString());
+                    }
+
+                    @Override
+                    public void onNext(UsBoxEntity usBoxEntity) {
+//                        getMvpView().loadMore(usBoxEntity);
+                        entity = usBoxEntity;
+                        log.d(usBoxEntity.getTitle()+"");
+                    }
+                });
+
+    }
+
+    public void recentMovie(){
         InitRetrofit.createApi(NetService.class)
                 .getHotMovie()
                 .subscribeOn(Schedulers.io())
@@ -54,6 +122,7 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
                     @Override
                     public void onCompleted() {
                         log.d("finished");
+                        update();
                     }
 
                     @Override
@@ -64,11 +133,20 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
 
                     @Override
                     public void onNext(UsBoxEntity usBoxEntity) {
-                        getMvpView().loadMore(usBoxEntity);
+//                        getMvpView().loadMore(usBoxEntity);
+                        entity = usBoxEntity;
                         log.d(usBoxEntity.getTitle()+"");
                     }
                 });
     }
+
+    public void update(){
+        if (USBOX_FINISHED && RECENT_FINISHED && HOTMO_FINISHED){
+            getMvpView().loadMore(entity);
+        }
+    }
+
+
 
     public void loadHotMovieWithVolley(){
 

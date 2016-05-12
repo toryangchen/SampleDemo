@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
 /**
  * Created by toryang on 16/4/26.
  */
-public class HotMovieFragment extends BaseFragment implements DataView, View.OnClickListener {
+public class HotMovieFragment extends BaseFragment implements DataView {
 
     @BindView(R.id.roll_view_pager)
     RollPagerView mRollViewPager;
@@ -41,7 +41,7 @@ public class HotMovieFragment extends BaseFragment implements DataView, View.OnC
         super.onCreate(savedInstanceState);
         presenter = new HotMoviePresenterImpl(getActivity());
         presenter.attachView(this);
-        presenter.loadHotMovie();
+        presenter.loadData();
 //        presenter.loadHotMovieWithVolley();
     }
 
@@ -61,15 +61,6 @@ public class HotMovieFragment extends BaseFragment implements DataView, View.OnC
         mRollViewPager.setHintView(new IconHintView(getContext(), R.drawable.point_focus, R.drawable.point_normal));
 
         recyclerMovie.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-
-    }
-
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-
-        }
 
     }
 
