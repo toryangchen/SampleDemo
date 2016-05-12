@@ -2,21 +2,20 @@ package com.toryang.sampledemo.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.IconHintView;
 import com.toryang.sampledemo.R;
 import com.toryang.sampledemo.model.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.presenter.HotMoviePresenterImpl;
-import com.toryang.sampledemo.ui.adapter.LoopAdapter;
 import com.toryang.sampledemo.ui.BaseFragment;
+import com.toryang.sampledemo.ui.adapter.LoopAdapter;
 import com.toryang.sampledemo.ui.view.DataView;
-import com.toryang.sampledemo.ui.view.IhotView;
 import com.toryang.sampledemo.utils.Log;
 
 import butterknife.BindView;
@@ -25,15 +24,18 @@ import butterknife.ButterKnife;
 /**
  * Created by toryang on 16/4/26.
  */
-public class HotMovieFragment extends BaseFragment implements DataView{
+public class HotMovieFragment extends BaseFragment implements DataView, View.OnClickListener {
 
-    @BindView(R.id.roll_view_pager)RollPagerView mRollViewPager;
-    @BindView(R.id.container)LinearLayout mContainer;
+    @BindView(R.id.roll_view_pager)
+    RollPagerView mRollViewPager;
+    @BindView(R.id.recycler_movie)
+    RecyclerView recyclerMovie;
 
     private HotMoviePresenterImpl presenter;
-    private View hotMovie, recentMovie, usBox;
+
 
     Log log = Log.YLog();
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +48,8 @@ public class HotMovieFragment extends BaseFragment implements DataView{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_hotmovie,container,false);
-        ButterKnife.bind(this,view);
+        View view = inflater.inflate(R.layout.fragment_hotmovie, container, false);
+        ButterKnife.bind(this, view);
         operateView();
         return view;
     }
@@ -56,20 +58,24 @@ public class HotMovieFragment extends BaseFragment implements DataView{
         mRollViewPager.setPlayDelay(1000);
         mRollViewPager.setAnimationDurtion(500);
         mRollViewPager.setAdapter(new LoopAdapter(mRollViewPager));
-        mRollViewPager.setHintView(new IconHintView(getContext(),R.drawable.point_focus,R.drawable.point_normal));
+        mRollViewPager.setHintView(new IconHintView(getContext(), R.drawable.point_focus, R.drawable.point_normal));
 
-        hotMovie = mContainer.findViewById(R.id.include_hot);
-        recentMovie = mContainer.findViewById(R.id.include_recent);
-        usBox = mContainer.findViewById(R.id.include_usbox);
+        recyclerMovie.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
 
-//        ((TextView)(hotMovie.findViewById(R.id.tv_hotmovie))).setText();
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+
+        }
 
     }
 
 
     /**
      * Presenter 的回调接口，用于更新UI
-     *
      */
 
     @Override
@@ -82,4 +88,6 @@ public class HotMovieFragment extends BaseFragment implements DataView{
     public void loadMore(UsBoxEntity usBoxEntity) {
         log.d(usBoxEntity.getTitle());
     }
+
+
 }

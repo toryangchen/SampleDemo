@@ -6,4 +6,11 @@
         <item>即将上映</item>
         <item>北美票房</item>
     </string-array>
+
+
+    <string-array name="movie_title">
+        <item>热门电影</item>
+        <item>近期上映</item>
+        <item>北美票房榜</item>
+    </string-array>
 </resources>
