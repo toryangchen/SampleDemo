@@ -12,6 +12,8 @@ import com.android.volley.toolbox.Volley;
 import com.toryang.sampledemo.api.InitRetrofit;
 import com.toryang.sampledemo.api.NetService;
 import com.toryang.sampledemo.config.IPAddress;
+import com.toryang.sampledemo.model.entities.comingSoon.ComingSoon;
+import com.toryang.sampledemo.model.entities.inthreat.InThreatEntity;
 import com.toryang.sampledemo.model.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.ui.view.DataView;
 import com.toryang.sampledemo.utils.Log;
@@ -50,12 +52,12 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
     }
 
     public void loadData(){
-        loadHotMovie();
+        usBoxMovie();
         loadUsBox();
         recentMovie();
     }
 
-    public void loadHotMovie(){
+    public void usBoxMovie(){
         InitRetrofit.createApi(NetService.class)
                 .getHotMovie()
                 .subscribeOn(Schedulers.io())
@@ -85,10 +87,10 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
 
     public void loadUsBox(){
         InitRetrofit.createApi(NetService.class)
-                .getHotMovie()
+                .getInTheaters()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<UsBoxEntity>() {
+                .subscribe(new Observer<InThreatEntity>() {
                     @Override
                     public void onCompleted() {
                         USBOX_FINISHED = true;
@@ -104,10 +106,9 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
                     }
 
                     @Override
-                    public void onNext(UsBoxEntity usBoxEntity) {
+                    public void onNext(InThreatEntity inThreatEntity ) {
 //                        getMvpView().loadMore(usBoxEntity);
-                        entity = usBoxEntity;
-                        log.d(usBoxEntity.getTitle()+"");
+
                     }
                 });
 
@@ -115,10 +116,10 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
 
     public void recentMovie(){
         InitRetrofit.createApi(NetService.class)
-                .getHotMovie()
+                .getComingSoon()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<UsBoxEntity>() {
+                .subscribe(new Observer<ComingSoon>() {
                     @Override
                     public void onCompleted() {
                         log.d("finished");
@@ -132,10 +133,10 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
                     }
 
                     @Override
-                    public void onNext(UsBoxEntity usBoxEntity) {
+                    public void onNext(ComingSoon comingSoon) {
 //                        getMvpView().loadMore(usBoxEntity);
-                        entity = usBoxEntity;
-                        log.d(usBoxEntity.getTitle()+"");
+//                        entity = usBoxEntity;
+//                        log.d(usBoxEntity.getTitle()+"");
                     }
                 });
     }
