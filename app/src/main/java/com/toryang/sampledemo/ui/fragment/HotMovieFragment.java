@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.IconHintView;
 import com.toryang.sampledemo.R;
+import com.toryang.sampledemo.model.entities.comingSoon.ComingSoon;
+import com.toryang.sampledemo.model.entities.inthreat.InThreatEntity;
 import com.toryang.sampledemo.model.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.presenter.HotMoviePresenterImpl;
 import com.toryang.sampledemo.ui.BaseFragment;
@@ -77,7 +79,13 @@ public class HotMovieFragment extends BaseFragment implements DataView {
 
     @Override
     public void loadMore(UsBoxEntity usBoxEntity) {
-        log.d(usBoxEntity.getTitle());
+
+    }
+
+    @Override
+    public void loadData(UsBoxEntity usBoxEntity, ComingSoon comingSoon, InThreatEntity inThreatEntity) {
+        log.d("here");
+        log.d(usBoxEntity.getTitle()+":"+comingSoon.getTitle()+":"+inThreatEntity.getTitle());
     }
 
 

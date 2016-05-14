@@ -36,7 +36,9 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
     Log log = Log.YLog();
     Context context;
 
-    UsBoxEntity entity;
+    UsBoxEntity usBoxentity;
+    ComingSoon comingSoonEntity;
+    InThreatEntity inThreatentity;
     public HotMoviePresenterImpl(Context context){
         this.context = context;
     }
@@ -79,7 +81,7 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
 
                     @Override
                     public void onNext(UsBoxEntity usBoxEntity) {
-                        entity = usBoxEntity;
+                        usBoxentity = usBoxEntity;
                         log.d(usBoxEntity.getTitle()+"");
                     }
                 });
@@ -107,7 +109,7 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
 
                     @Override
                     public void onNext(InThreatEntity inThreatEntity ) {
-//                        getMvpView().loadMore(usBoxEntity);
+                        inThreatentity = inThreatEntity;
 
                     }
                 });
@@ -123,27 +125,27 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
                     @Override
                     public void onCompleted() {
                         log.d("finished");
+                        RECENT_FINISHED = true;
                         update();
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         getMvpView().showError(null,null);
+                        RECENT_FINISHED = true;
                         log.e(e.toString());
                     }
 
                     @Override
                     public void onNext(ComingSoon comingSoon) {
-//                        getMvpView().loadMore(usBoxEntity);
-//                        entity = usBoxEntity;
-//                        log.d(usBoxEntity.getTitle()+"");
+                        comingSoonEntity = comingSoon;
                     }
                 });
     }
 
     public void update(){
         if (USBOX_FINISHED && RECENT_FINISHED && HOTMO_FINISHED){
-            getMvpView().loadMore(entity);
+            getMvpView().loadData(usBoxentity,comingSoonEntity,inThreatentity);
         }
     }
 

@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.toryang.sampledemo.model.entities.comingSoon.ComingSoon;
+import com.toryang.sampledemo.model.entities.inthreat.InThreatEntity;
 import com.toryang.sampledemo.model.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.ui.BaseFragment;
 import com.toryang.sampledemo.ui.view.DataView;
@@ -34,6 +36,11 @@ public class TopMovFragment extends BaseFragment implements DataView {
 
     @Override
     public void loadMore(UsBoxEntity usBoxEntity) {
+
+    }
+
+    @Override
+    public void loadData(UsBoxEntity usBoxEntity, ComingSoon comingSoon, InThreatEntity inThreatEntity) {
 
     }
 }

@@ -16,7 +16,6 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
@@ -29,6 +28,9 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width=""
+        android:layout_height=""></android.support.v4.widget.NestedScrollView>
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager_tab"
         android:layout_width="match_parent"
