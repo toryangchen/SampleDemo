@@ -19,15 +19,17 @@ public class LoopAdapter extends LoopPagerAdapter {
             R.drawable.img4,
             R.drawable.img5
     };
+    private String[] imageUri;
 
-    public LoopAdapter(RollPagerView viewPager) {
+    public LoopAdapter(RollPagerView viewPager,String[] imageUri) {
         super(viewPager);
+        this.imageUri = imageUri;
     }
 
     @Override
     public View getView(ViewGroup container, int position) {
         ImageView view = new ImageView(container.getContext());
-        view.setImageResource(imgs[position]);
+//        view.setImageDrawable();
         view.setScaleType(ImageView.ScaleType.CENTER_CROP);
         view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         return view;
@@ -37,4 +39,6 @@ public class LoopAdapter extends LoopPagerAdapter {
     protected int getRealCount() {
         return imgs.length;
     }
+
+
 }
