@@ -11,7 +11,7 @@ keep going......
 **入门篇：**  
 [第一篇：开发环境篇](http://www.jianshu.com/p/b20c9c6993f5)  
 [第二篇：材料设计篇](http://www.jianshu.com/p/47b81f3a0b31)  
-第三篇：从项目开发到上架篇  
+[第三篇：规范开发篇](http://www.jianshu.com/p/be0d9c0908f2)  
 
 **进阶篇：**  
 第四篇：设计模式篇  
