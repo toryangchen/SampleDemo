@@ -1,9 +1,5 @@
 package com.toryang.sampledemo.ui.fragment;
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,18 +11,15 @@ import android.view.ViewGroup;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.IconHintView;
 import com.toryang.sampledemo.R;
-import com.toryang.sampledemo.common.OkhttpUtil;
-import com.toryang.sampledemo.model.entities.comingSoon.ComingSoon;
-import com.toryang.sampledemo.model.entities.inthreat.InThreatEntity;
-import com.toryang.sampledemo.model.entities.usbox.UsBoxEntity;
+import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
+import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
+import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.presenter.HotMoviePresenterImpl;
 import com.toryang.sampledemo.ui.BaseFragment;
 import com.toryang.sampledemo.ui.adapter.LoopAdapter;
 import com.toryang.sampledemo.ui.adapter.OutRecyclerAdapter;
 import com.toryang.sampledemo.ui.view.DataView;
 import com.toryang.sampledemo.utils.Log;
-
-import java.io.IOException;
 
 import butterknife.BindArray;
 import butterknife.BindView;
@@ -86,17 +79,6 @@ public class HotMovieFragment extends BaseFragment implements DataView {
      */
 
     @Override
-    public void refresh(UsBoxEntity usBoxEntity) {
-
-
-    }
-
-    @Override
-    public void loadMore(UsBoxEntity usBoxEntity) {
-
-    }
-
-    @Override
     public void loadData(UsBoxEntity usBoxEntity, ComingSoon comingSoon, InThreatEntity inThreatEntity) {
         log.d(usBoxEntity.getTitle()+":"+comingSoon.getTitle()+":"+inThreatEntity.getTitle());
         mAdapter = new OutRecyclerAdapter(getActivity(),title,usBoxEntity,comingSoon,inThreatEntity);
@@ -107,6 +89,7 @@ public class HotMovieFragment extends BaseFragment implements DataView {
 
         recyclerMovie.setAdapter(mAdapter);
     }
+
 
     public void downLoadFile(Observable<String> observable){
         observable.subscribeOn(Schedulers.io())

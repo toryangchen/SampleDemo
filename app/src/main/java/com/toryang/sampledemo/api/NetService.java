@@ -1,9 +1,9 @@
 package com.toryang.sampledemo.api;
 
-import com.toryang.sampledemo.model.entities.comingSoon.ComingSoon;
-import com.toryang.sampledemo.model.entities.inthreat.InThreatEntity;
-import com.toryang.sampledemo.model.entities.top250.Top250Entity;
-import com.toryang.sampledemo.model.entities.usbox.UsBoxEntity;
+import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
+import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
+import com.toryang.sampledemo.entities.top250.Top250Entity;
+import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
 
 import retrofit2.http.GET;
 import rx.Observable;

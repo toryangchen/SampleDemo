@@ -12,9 +12,9 @@ import com.android.volley.toolbox.Volley;
 import com.toryang.sampledemo.api.InitRetrofit;
 import com.toryang.sampledemo.api.NetService;
 import com.toryang.sampledemo.config.IPAddress;
-import com.toryang.sampledemo.model.entities.comingSoon.ComingSoon;
-import com.toryang.sampledemo.model.entities.inthreat.InThreatEntity;
-import com.toryang.sampledemo.model.entities.usbox.UsBoxEntity;
+import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
+import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
+import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.ui.view.DataView;
 import com.toryang.sampledemo.utils.Log;
 
@@ -74,7 +74,7 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
 
                     @Override
                     public void onError(Throwable e) {
-                        getMvpView().showError(null,null);
+                        getMvpView().showError(null);
                         HOTMO_FINISHED = true;
                         log.e(e.toString());
                     }
@@ -102,7 +102,7 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
 
                     @Override
                     public void onError(Throwable e) {
-                        getMvpView().showError(null,null);
+                        getMvpView().showError(null);
                         USBOX_FINISHED = true;
                         log.e(e.toString());
                     }
@@ -131,7 +131,7 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
 
                     @Override
                     public void onError(Throwable e) {
-                        getMvpView().showError(null,null);
+                        getMvpView().showError(null);
                         RECENT_FINISHED = true;
                         log.e(e.toString());
                     }

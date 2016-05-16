@@ -9,9 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.toryang.sampledemo.R;
-import com.toryang.sampledemo.model.entities.comingSoon.ComingSoon;
-import com.toryang.sampledemo.model.entities.inthreat.InThreatEntity;
-import com.toryang.sampledemo.model.entities.usbox.UsBoxEntity;
+import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
+import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
+import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.utils.Log;
 
 import butterknife.BindView;

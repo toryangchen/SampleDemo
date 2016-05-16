@@ -16,7 +16,7 @@ public class BaseFragment extends Fragment implements MvpView {
 
 
     @Override
-    public void showLoading(String msg) {
+    public void startLoading() {
 
     }
 
@@ -26,22 +26,7 @@ public class BaseFragment extends Fragment implements MvpView {
     }
 
     @Override
-    public void showError(String msg, View.OnClickListener onClickListener) {
-
-    }
-
-    @Override
-    public void showEmpty(String msg, View.OnClickListener onClickListener) {
-
-    }
-
-    @Override
-    public void showEmpty(String msg, View.OnClickListener onClickListener, int imagId) {
-
-    }
-
-    @Override
-    public void showNetError(View.OnClickListener onClickListener) {
+    public void showError(String msg) {
 
     }
 }
