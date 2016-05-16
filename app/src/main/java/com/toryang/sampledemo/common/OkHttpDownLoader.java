@@ -1,5 +1,6 @@
 package com.toryang.sampledemo.common;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 
 import com.squareup.picasso.Downloader;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import okhttp3.CacheControl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by toryang on 16/4/28.
