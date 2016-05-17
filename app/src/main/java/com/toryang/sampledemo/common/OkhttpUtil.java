@@ -33,6 +33,17 @@ public class OkhttpUtil {
     public OkhttpUtil(String url){
         this.url = url;
     }
+    public void run() throws IOException{
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        Response response = client.newCall(request).execute();
+
+        log.d(response.body().string());
+    }
+
+
 
     /**
      * download bitmap image；

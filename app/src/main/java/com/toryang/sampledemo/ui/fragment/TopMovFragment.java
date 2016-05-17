@@ -29,15 +29,6 @@ public class TopMovFragment extends BaseFragment implements DataView {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
-    @Override
-    public void refresh(UsBoxEntity usBoxEntity) {
-
-    }
-
-    @Override
-    public void loadMore(UsBoxEntity usBoxEntity) {
-
-    }
 
     @Override
     public void loadData(UsBoxEntity usBoxEntity, ComingSoon comingSoon, InThreatEntity inThreatEntity) {

@@ -154,19 +154,17 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
     public void loadHotMovieWithVolley(){
 
         RequestQueue mQueue = Volley.newRequestQueue(context);
-        StringRequest request = new StringRequest("http://www.baidu.com", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                log.d(response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                log.e(error);
-            }
-        });
-
-
+//        StringRequest request = new StringRequest("http://www.baidu.com", new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                log.d(response);
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                log.e(error);
+//            }
+//        });
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(IPAddress.totalUrl, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -179,7 +177,7 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
                 log.e(error);
             }
         });
-        mQueue.add(request);
+//        mQueue.add(request);
         mQueue.add(jsonObjectRequest);
     }
 }

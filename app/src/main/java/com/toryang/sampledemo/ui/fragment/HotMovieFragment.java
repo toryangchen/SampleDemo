@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.IconHintView;
 import com.toryang.sampledemo.R;
+import com.toryang.sampledemo.common.OkhttpUtil;
 import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
 import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
 import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
@@ -20,6 +21,8 @@ import com.toryang.sampledemo.ui.adapter.LoopAdapter;
 import com.toryang.sampledemo.ui.adapter.OutRecyclerAdapter;
 import com.toryang.sampledemo.ui.view.DataView;
 import com.toryang.sampledemo.utils.Log;
+
+import java.io.IOException;
 
 import butterknife.BindArray;
 import butterknife.BindView;
@@ -82,10 +85,11 @@ public class HotMovieFragment extends BaseFragment implements DataView {
     public void loadData(UsBoxEntity usBoxEntity, ComingSoon comingSoon, InThreatEntity inThreatEntity) {
         log.d(usBoxEntity.getTitle()+":"+comingSoon.getTitle()+":"+inThreatEntity.getTitle());
         mAdapter = new OutRecyclerAdapter(getActivity(),title,usBoxEntity,comingSoon,inThreatEntity);
-//        imageUri[0] = usBoxEntity.getSubjects().get(0).getSubject().getImages().getLarge();
+        imageUri[0] = usBoxEntity.getSubjects().get(0).getSubject().getImages().getLarge();
 //        imageUri[1] = comingSoon.getSubjects().get(0).getImages().getLarge();
 //        imageUri[2] = inThreatEntity.getSubjects().get(0).getImages().getLarge();
 //        downLoadImage(new OkhttpUtil(imageUri[0]).downloadDrawble);
+
 
         recyclerMovie.setAdapter(mAdapter);
     }
