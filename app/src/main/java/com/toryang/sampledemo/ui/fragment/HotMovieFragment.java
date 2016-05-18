@@ -1,5 +1,7 @@
 package com.toryang.sampledemo.ui.fragment;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,10 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.IconHintView;
+import com.squareup.picasso.Picasso;
 import com.toryang.sampledemo.R;
+import com.toryang.sampledemo.common.InitPicasso;
 import com.toryang.sampledemo.common.OkhttpUtil;
 import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
 import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
@@ -37,12 +42,15 @@ import rx.schedulers.Schedulers;
  */
 public class HotMovieFragment extends BaseFragment implements DataView {
 
-    @BindView(R.id.roll_view_pager)
-    RollPagerView mRollViewPager;
+//    @BindView(R.id.roll_view_pager)
+//    RollPagerView mRollViewPager;
     @BindView(R.id.recycler_movie)
     RecyclerView recyclerMovie;
     @BindArray(R.array.movie_title)
     String[] title;
+
+    @BindView(R.id.image_pic)
+    ImageView imageView;
 
     String[] imageUri = new String[3];
     private HotMoviePresenterImpl presenter;
@@ -66,14 +74,18 @@ public class HotMovieFragment extends BaseFragment implements DataView {
         View view = inflater.inflate(R.layout.fragment_hotmovie, container, false);
         ButterKnife.bind(this, view);
         operateView();
+        InitPicasso.getPicasso(getActivity())
+                .with(getActivity())
+                .load("http://i.imgur.com/DvpvklR.png").into(imageView);
+//        Picasso.with(getActivity()).load("http://i.imgur.com/DvpvklR.png").into(imageView);
         return view;
     }
 
     public void operateView() {
-        mRollViewPager.setPlayDelay(1000);
-        mRollViewPager.setAnimationDurtion(500);
-        mRollViewPager.setAdapter(new LoopAdapter(getActivity(),mRollViewPager,imageUri));
-        mRollViewPager.setHintView(new IconHintView(getContext(), R.drawable.point_focus, R.drawable.point_normal));
+//        mRollViewPager.setPlayDelay(1000);
+//        mRollViewPager.setAnimationDurtion(500);
+//        mRollViewPager.setAdapter(new LoopAdapter(getActivity(),mRollViewPager,imageUri));
+//        mRollViewPager.setHintView(new IconHintView(getContext(), R.drawable.point_focus, R.drawable.point_normal));
         recyclerMovie.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
     }
 
@@ -89,17 +101,15 @@ public class HotMovieFragment extends BaseFragment implements DataView {
 //        imageUri[1] = comingSoon.getSubjects().get(0).getImages().getLarge();
 //        imageUri[2] = inThreatEntity.getSubjects().get(0).getImages().getLarge();
 //        downLoadImage(new OkhttpUtil(imageUri[0]).downloadDrawble);
-
-
         recyclerMovie.setAdapter(mAdapter);
     }
 
 
-    public void downLoadFile(Observable<String> observable){
+    public void downLoadImage(Observable<Bitmap> observable){
         observable.subscribeOn(Schedulers.io())
                 .onBackpressureBuffer()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<String>() {
+                .subscribe(new Subscriber<Bitmap>() {
                     @Override
                     public void onCompleted() {
 
@@ -111,9 +121,8 @@ public class HotMovieFragment extends BaseFragment implements DataView {
                     }
 
                     @Override
-                    public void onNext(String s) {
-
-
+                    public void onNext(Bitmap s) {
+                        imageView.setImageDrawable(new BitmapDrawable(getResources(),s));
                         log.d(s);
                     }
                 });

@@ -37,8 +37,7 @@
             <ImageView
                 android:id="@+id/image_pic_one"
                 android:layout_width="@dimen/movie_pic_width"
-                android:layout_height="@dimen/movie_pic_height"
-                android:src="@mipmap/movie"/>
+                android:layout_height="@dimen/movie_pic_height" />
 
             <TextView
                 android:id="@+id/tv_movie_name_one"

@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.toryang.sampledemo.R;
+import com.toryang.sampledemo.common.InitPicasso;
 import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
 import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
 import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
@@ -54,14 +56,20 @@ public class OutRecyclerAdapter extends RecyclerView.Adapter<OutRecyclerAdapter.
     public void onBindViewHolder(MyViewHolder holder, int position) {
         if (position == 0){
             holder.tvHotmovie.setText(title[position]);
+//            InitPicasso.getPicasso(mContext)
+//                    .load("http://i.imgur.com/DvpvklR.png")
+//                    .into(holder.imagePicOne);
 
         }else if (position == 1){
             holder.tvHotmovie.setText(title[position]);
+
 
         }else {
             holder.tvHotmovie.setText(title[position]);
 
         }
+
+
 
     }
 

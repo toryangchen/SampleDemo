@@ -28,6 +28,7 @@ public class InitRetrofit {
 
     private static OkHttpClient client = new OkHttpClient
             .Builder()
+//            .addNetworkInterceptor(new HeaderInterceptor())
             .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .addInterceptor(new GzipRequsetInterceptor())
             .build();
@@ -57,6 +58,20 @@ public class InitRetrofit {
             return response;
         }
     }
+    static class HeaderInterceptor implements Interceptor{
+
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request originalRequest = chain.request();
+            Request compressedRequest = originalRequest.newBuilder()
+                    .addHeader("User-Agent", "SampleDemo/"+ " (android;" + android.os.Build.VERSION.RELEASE + ";" + android.os.Build.MODEL + ")")
+                    .addHeader("Content-Type", "application/x-www-form-urlencoded")
+                    .addHeader("Accept", "*/*")
+                    .build();
+            return chain.proceed(compressedRequest);
+        }
+    }
+
 
     static class GzipRequsetInterceptor implements Interceptor{
 
@@ -97,6 +112,8 @@ public class InitRetrofit {
         }
 
     }
+
+
 
     private InitRetrofit(){
 

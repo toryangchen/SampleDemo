@@ -7,11 +7,16 @@
     android:layout_height="match_parent">
 
 
-    <com.jude.rollviewpager.RollPagerView
-        android:id="@+id/roll_view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        app:rollviewpager_play_delay="3000"/>
+    <!--<com.jude.rollviewpager.RollPagerView-->
+        <!--android:id="@+id/roll_view_pager"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="180dp"-->
+        <!--app:rollviewpager_play_delay="3000"/>-->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/image_pic"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_movie"
