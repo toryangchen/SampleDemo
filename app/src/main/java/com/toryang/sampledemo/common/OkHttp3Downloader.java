@@ -103,7 +103,7 @@ public class OkHttp3Downloader implements Downloader{
             }
         }
 
-        Request.Builder builder = new Request.Builder();
+        Request.Builder builder = new Request.Builder().url(uri.toString());
         if (cacheControl != null){
             builder.cacheControl(cacheControl);
         }
@@ -112,10 +112,12 @@ public class OkHttp3Downloader implements Downloader{
         int responseCode = response.code();
         if (responseCode >= 300){
             response.body().close();
-            throw  new ResponseException(responseCode + " " + response.message(),networkPolicy,responseCode);
+            throw  new ResponseException(responseCode + " " + response.message(),networkPolicy,
+                    responseCode);
         }
 
         boolean fromCache = response.cacheResponse() != null;
+        
         ResponseBody responseBody = response.body();
         return new Response(responseBody.byteStream(),fromCache,responseBody.contentLength());
     }

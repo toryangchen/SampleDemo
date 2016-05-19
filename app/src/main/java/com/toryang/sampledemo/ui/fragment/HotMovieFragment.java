@@ -13,9 +13,12 @@ import android.widget.ImageView;
 
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.IconHintView;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import com.toryang.sampledemo.App;
 import com.toryang.sampledemo.R;
 import com.toryang.sampledemo.common.InitPicasso;
+import com.toryang.sampledemo.common.OkHttp3Downloader;
 import com.toryang.sampledemo.common.OkhttpUtil;
 import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
 import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
@@ -32,6 +35,7 @@ import java.io.IOException;
 import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.OkHttpClient;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -74,10 +78,7 @@ public class HotMovieFragment extends BaseFragment implements DataView {
         View view = inflater.inflate(R.layout.fragment_hotmovie, container, false);
         ButterKnife.bind(this, view);
         operateView();
-        InitPicasso.getPicasso(getActivity())
-                .with(getActivity())
-                .load("http://i.imgur.com/DvpvklR.png").into(imageView);
-//        Picasso.with(getActivity()).load("http://i.imgur.com/DvpvklR.png").into(imageView);
+        App.getPicasso().with(getActivity()).load("http://i.imgur.com/DvpvklR.png").into(imageView);
         return view;
     }
 

@@ -38,6 +38,7 @@ dependencies {
 
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+    compile 'com.squareup.okio:okio:1.8.0'
 
     compile 'com.mcxiaoke.volley:library:1.0.19'
 
