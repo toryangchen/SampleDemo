@@ -17,7 +17,7 @@ keep going......
 **进阶篇：**  
 [第五篇：设计模式篇](http://www.jianshu.com/p/fa92ca51bdb0)  
 [第六篇：网络请求篇（上）](http://www.jianshu.com/p/b084b6d91260)  
-         网络请求篇（下）  
+         [网络请求篇（下）](http://www.jianshu.com/p/4c0b9793d0b7)  
 [第七篇：图片处理篇](http://www.jianshu.com/p/9b93737bfa88)  
 第八篇：数据库篇  
 第九篇：开源项目篇  
