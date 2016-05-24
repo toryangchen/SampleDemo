@@ -19,8 +19,8 @@ keep going......
 [第六篇：网络请求篇（上）](http://www.jianshu.com/p/b084b6d91260)  
          [网络请求篇（下）](http://www.jianshu.com/p/4c0b9793d0b7)  
 [第七篇：图片处理篇](http://www.jianshu.com/p/9b93737bfa88)  
-第八篇：数据库篇  
-第九篇：开源项目篇  
+[第八篇：数据库篇](http://www.jianshu.com/p/260dda970e19)    
+第九篇：开源资源篇  
 
 **高阶篇：**  
 第十篇：自定义控件篇  
