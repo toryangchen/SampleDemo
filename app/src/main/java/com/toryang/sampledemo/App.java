@@ -1,11 +1,9 @@
 package com.toryang.sampledemo;
 
 import android.app.Application;
-import android.net.Uri;
 
 import com.squareup.picasso.Picasso;
 import com.toryang.sampledemo.common.OkHttp3Downloader;
-import com.toryang.sampledemo.utils.Log;
 
 import okhttp3.OkHttpClient;
 

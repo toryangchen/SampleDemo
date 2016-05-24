@@ -7,35 +7,26 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 
-import com.jude.rollviewpager.RollPagerView;
-import com.jude.rollviewpager.hintview.IconHintView;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 import com.toryang.sampledemo.App;
 import com.toryang.sampledemo.R;
-import com.toryang.sampledemo.common.InitPicasso;
-import com.toryang.sampledemo.common.OkHttp3Downloader;
-import com.toryang.sampledemo.common.OkhttpUtil;
 import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
 import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
 import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.presenter.HotMoviePresenterImpl;
 import com.toryang.sampledemo.ui.BaseFragment;
-import com.toryang.sampledemo.ui.adapter.LoopAdapter;
 import com.toryang.sampledemo.ui.adapter.OutRecyclerAdapter;
 import com.toryang.sampledemo.ui.view.DataView;
 import com.toryang.sampledemo.utils.Log;
 
-import java.io.IOException;
-
 import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import okhttp3.OkHttpClient;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -78,7 +69,7 @@ public class HotMovieFragment extends BaseFragment implements DataView {
         View view = inflater.inflate(R.layout.fragment_hotmovie, container, false);
         ButterKnife.bind(this, view);
         operateView();
-        App.getPicasso().with(getActivity()).load("http://i.imgur.com/DvpvklR.png").into(imageView);
+//        App.getPicasso().with(getActivity()).load("http://i.imgur.com/DvpvklR.png").into(imageView);
         return view;
     }
 
@@ -96,13 +87,11 @@ public class HotMovieFragment extends BaseFragment implements DataView {
 
     @Override
     public void loadData(UsBoxEntity usBoxEntity, ComingSoon comingSoon, InThreatEntity inThreatEntity) {
-        log.d(usBoxEntity.getTitle()+":"+comingSoon.getTitle()+":"+inThreatEntity.getTitle());
+//        log.d(usBoxEntity.getTitle()+":"+comingSoon.getTitle()+":"+inThreatEntity.getTitle());
         mAdapter = new OutRecyclerAdapter(getActivity(),title,usBoxEntity,comingSoon,inThreatEntity);
-        imageUri[0] = usBoxEntity.getSubjects().get(0).getSubject().getImages().getLarge();
-//        imageUri[1] = comingSoon.getSubjects().get(0).getImages().getLarge();
-//        imageUri[2] = inThreatEntity.getSubjects().get(0).getImages().getLarge();
-//        downLoadImage(new OkhttpUtil(imageUri[0]).downloadDrawble);
+//        imageUri[0] = usBoxEntity.getSubjects().get(0).getSubject().getImages().getLarge();
         recyclerMovie.setAdapter(mAdapter);
+
     }
 
 

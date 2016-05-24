@@ -9,7 +9,7 @@
 
     <dimen name="movie_intro">18sp</dimen>
     <dimen name="movie_more">14sp</dimen>
-    <dimen name="movie_name">16sp</dimen>
+    <dimen name="movie_name">14sp</dimen>
 
     <dimen name="movie_introduce_height">280dp</dimen>
 

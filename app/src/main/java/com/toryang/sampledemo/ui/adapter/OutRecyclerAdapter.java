@@ -6,11 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.toryang.sampledemo.App;
 import com.toryang.sampledemo.R;
-import com.toryang.sampledemo.common.InitPicasso;
 import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
 import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
 import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
@@ -24,7 +24,6 @@ import butterknife.ButterKnife;
  */
 public class OutRecyclerAdapter extends RecyclerView.Adapter<OutRecyclerAdapter.MyViewHolder> {
     Log log = Log.YLog();
-
 
     private Context mContext;
     private LayoutInflater mLayoutInflater;
@@ -56,21 +55,31 @@ public class OutRecyclerAdapter extends RecyclerView.Adapter<OutRecyclerAdapter.
     public void onBindViewHolder(MyViewHolder holder, int position) {
         if (position == 0){
             holder.tvHotmovie.setText(title[position]);
-//            InitPicasso.getPicasso(mContext)
-//                    .load("http://i.imgur.com/DvpvklR.png")
-//                    .into(holder.imagePicOne);
-
+            App.getPicasso().with(mContext).load(inThreatEntity.getSubjects().get(0).getImages().getLarge()).into(holder.imagePicOne);
+            App.getPicasso().with(mContext).load(inThreatEntity.getSubjects().get(1).getImages().getLarge()).into(holder.imagePicTwo);
+            App.getPicasso().with(mContext).load(inThreatEntity.getSubjects().get(2).getImages().getLarge()).into(holder.imagePicThree);
+            holder.tvMovieNameOne.setText(inThreatEntity.getSubjects().get(0).getTitle());
+            holder.tvMovieNameTwo.setText(inThreatEntity.getSubjects().get(1).getTitle());
+            holder.tvMovieNameThree.setText(inThreatEntity.getSubjects().get(2).getTitle());
         }else if (position == 1){
             holder.tvHotmovie.setText(title[position]);
-
-
+            App.getPicasso().with(mContext).load(comingSoon.getSubjects().get(0).getImages().getLarge()).into(holder.imagePicOne);
+            App.getPicasso().with(mContext).load(comingSoon.getSubjects().get(1).getImages().getLarge()).into(holder.imagePicTwo);
+            App.getPicasso().with(mContext).load(comingSoon.getSubjects().get(2).getImages().getLarge()).into(holder.imagePicThree);
+            holder.tvMovieNameOne.setText(comingSoon.getSubjects().get(0).getTitle());
+            holder.tvMovieNameTwo.setText(comingSoon.getSubjects().get(1).getTitle());
+            holder.tvMovieNameThree.setText(comingSoon.getSubjects().get(2).getTitle());
         }else {
             holder.tvHotmovie.setText(title[position]);
-
+            App.getPicasso().with(mContext).load(usBoxEntity.getSubjects().get(0).getSubject().getImages().getLarge()).into(holder.imagePicOne);
+            App.getPicasso().with(mContext).load(usBoxEntity.getSubjects().get(1).getSubject().getImages().getLarge()).into(holder.imagePicTwo);
+            App.getPicasso().with(mContext).load(usBoxEntity.getSubjects().get(2).getSubject().getImages().getLarge()).into(holder.imagePicThree);
+            holder.tvMovieNameOne.setText(usBoxEntity.getSubjects().get(0).getSubject().getTitle());
+            holder.tvMovieNameTwo.setText(usBoxEntity.getSubjects().get(1).getSubject().getTitle());
+            holder.tvMovieNameThree.setText(usBoxEntity.getSubjects().get(2).getSubject().getTitle());
         }
-
-
-
+        MyClickListener myClickListener = new MyClickListener(position);
+        holder.mLoadMore.setOnClickListener(myClickListener);
     }
 
     @Override
@@ -78,7 +87,36 @@ public class OutRecyclerAdapter extends RecyclerView.Adapter<OutRecyclerAdapter.
         return title.length;
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyClickListener implements View.OnClickListener{
+        int position;
+        MyClickListener(int position){
+            this.position = position;
+        }
+        @Override
+        public void onClick(View v) {
+            if (position == 0){
+                if (v.getId() == R.id.load_more){
+                    log.d(position);
+                }
+
+            }else if (position == 1){
+                if (v.getId() == R.id.load_more){
+                    log.d(position);
+                }
+
+            }else {
+                if (v.getId() == R.id.load_more){
+                    log.d(position);
+                }
+            }
+        }
+
+
+    }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
+        @BindView(R.id.load_more)
+        RelativeLayout mLoadMore;
         @BindView(R.id.tv_hotmovie)
         TextView tvHotmovie;
         @BindView(R.id.image_pic_one)
@@ -97,7 +135,6 @@ public class OutRecyclerAdapter extends RecyclerView.Adapter<OutRecyclerAdapter.
         public MyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
-
         }
     }
 

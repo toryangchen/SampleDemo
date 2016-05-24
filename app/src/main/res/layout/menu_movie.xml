@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <RelativeLayout
+        android:id="@+id/load_more"
         android:padding="@dimen/movie_padding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -44,6 +45,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/image_pic_one"
+                android:maxEms="5"
+                android:singleLine="true"
+                android:ellipsize="end"
                 android:layout_alignLeft="@id/image_pic_one"
                 android:text="电影名称"
                 android:textSize="@dimen/movie_name"/>
@@ -67,6 +71,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/image_pic_two"
                 android:layout_alignLeft="@id/image_pic_two"
+                android:maxEms="5"
+                android:singleLine="true"
+                android:ellipsize="end"
                 android:text="电影名称"
                 android:textSize="@dimen/movie_name"/>
         </RelativeLayout>
@@ -89,6 +96,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/image_pic_three"
                 android:layout_alignLeft="@id/image_pic_three"
+                android:maxEms="5"
+                android:singleLine="true"
+                android:ellipsize="end"
                 android:text="电影名称"
                 android:textSize="@dimen/movie_name"/>
         </RelativeLayout>

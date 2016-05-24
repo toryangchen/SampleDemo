@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="tab_titles">
-        <item>热门电影</item>
+        <item>首页</item>
         <item>top250</item>
     </string-array>
 
