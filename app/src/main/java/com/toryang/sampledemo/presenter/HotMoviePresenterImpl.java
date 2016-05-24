@@ -14,6 +14,7 @@ import com.toryang.sampledemo.api.NetService;
 import com.toryang.sampledemo.config.IPAddress;
 import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
 import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
+import com.toryang.sampledemo.entities.top250.Top250Entity;
 import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.ui.view.DataView;
 import com.toryang.sampledemo.utils.Log;
@@ -150,7 +151,6 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
     }
 
 
-
     public void loadHotMovieWithVolley(){
 
         RequestQueue mQueue = Volley.newRequestQueue(context);
@@ -180,4 +180,7 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
 //        mQueue.add(request);
         mQueue.add(jsonObjectRequest);
     }
+
+
+
 }
