@@ -12,7 +12,9 @@ import com.toryang.sampledemo.R;
 import com.toryang.sampledemo.entities.top250.Top250Entity;
 import com.toryang.sampledemo.presenter.Top250PresenterImpl;
 import com.toryang.sampledemo.ui.BaseFragment;
+import com.toryang.sampledemo.ui.activity.MovieInfoActivity;
 import com.toryang.sampledemo.ui.adapter.GridAdapter;
+import com.toryang.sampledemo.ui.adapter.GridItemClick;
 import com.toryang.sampledemo.ui.adapter.GridSpacingItemDecoration;
 import com.toryang.sampledemo.ui.view.TopDataView;
 
@@ -26,7 +28,6 @@ public class TopMovFragment extends BaseFragment implements TopDataView {
 
     @BindView(R.id.rv_movieinfo)
     RecyclerView rvMovieinfo;
-
 
     private Top250PresenterImpl presenter;
 
@@ -47,7 +48,7 @@ public class TopMovFragment extends BaseFragment implements TopDataView {
     }
 
     @Override
-    public void dataBack(Top250Entity top250Entity) {
+    public void dataBack(final Top250Entity top250Entity) {
         int spaceCount = 3;
         int spacing = 40;
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),spaceCount);
@@ -56,5 +57,11 @@ public class TopMovFragment extends BaseFragment implements TopDataView {
         rvMovieinfo.setHasFixedSize(true);
         GridAdapter adapter = new GridAdapter(getActivity(),top250Entity);
         rvMovieinfo.setAdapter(adapter);
+        rvMovieinfo.addOnItemTouchListener(new GridItemClick(getActivity(), new GridItemClick.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                MovieInfoActivity.startActivity(getActivity(),top250Entity.getSubjects().get(position));
+            }
+        }));
     }
 }

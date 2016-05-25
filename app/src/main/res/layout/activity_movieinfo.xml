@@ -6,7 +6,7 @@
     android:fitsSystemWindows="true">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="256dp"
+        android:layout_height="300dp"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
         <android.support.design.widget.CollapsingToolbarLayout
@@ -22,7 +22,7 @@
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="match_parent"
-                android:layout_height="256dp"
+                android:layout_height="300dp"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/movie"

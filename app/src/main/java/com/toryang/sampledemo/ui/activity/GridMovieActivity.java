@@ -78,27 +78,28 @@ public class GridMovieActivity extends BaseActivity {
         rvMovieinfo.setLayoutManager(gridLayoutManager);
         rvMovieinfo.addItemDecoration(new GridSpacingItemDecoration(spanCount,spacing,true ));
         rvMovieinfo.setHasFixedSize(true);
-        GridAdapter gridAdapter;
+        final GridAdapter gridAdapter;
         if (mUsBoxEntity != null) {
             gridAdapter= new GridAdapter(this,mUsBoxEntity);
             getSupportActionBar().setTitle(movie[2]);
-            mUsBoxEntity = null;
-
         } else if (mComingSoon != null) {
             gridAdapter = new GridAdapter(this,mComingSoon);
             getSupportActionBar().setTitle(movie[1]);
-            mComingSoon = null;
         } else {
             gridAdapter = new GridAdapter(this,mInThreatEntity);
             getSupportActionBar().setTitle(movie[0]);
-            mInThreatEntity = null;
         }
         rvMovieinfo.setAdapter(gridAdapter);
         rvMovieinfo.addOnItemTouchListener(new GridItemClick(this,new GridItemClick.OnItemClickListener(){
                     @Override
                     public void onItemClick(View view, int position) {
-                        log.d(position+":"+view.getId());
-                        startActivity(new Intent(GridMovieActivity.this,MovieInfoActivity.class));
+                        if (mUsBoxEntity != null) {
+                            MovieInfoActivity.startActivity(GridMovieActivity.this,mUsBoxEntity.getSubjects().get(position).getSubject());
+                        } else if (mComingSoon != null) {
+                            MovieInfoActivity.startActivity(GridMovieActivity.this,mComingSoon.getSubjects().get(position));
+                        } else {
+                            MovieInfoActivity.startActivity(GridMovieActivity.this,mInThreatEntity.getSubjects().get(position));
+                        }
                     }
                 })
         );
@@ -113,5 +114,13 @@ public class GridMovieActivity extends BaseActivity {
                 break;
         }
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mUsBoxEntity = null;
+        mComingSoon = null;
+        mInThreatEntity = null;
     }
 }

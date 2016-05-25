@@ -16,6 +16,7 @@ import com.toryang.sampledemo.App;
 import com.toryang.sampledemo.R;
 import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
 import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
+import com.toryang.sampledemo.entities.top250.Subject;
 import com.toryang.sampledemo.entities.top250.Top250Entity;
 import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.utils.Log;
@@ -30,12 +31,12 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.GridViewHolder
 
     Log log = Log.YLog();
     private Context mContext;
-    private LayoutInflater mLayoutInflater;
 
     private UsBoxEntity usBoxEntity;
     private ComingSoon comingSoon;
     private InThreatEntity inThreatEntity;
     private Top250Entity top250Entity;
+
 
     public GridAdapter(Context context,UsBoxEntity usBoxEntity){
         mContext = context;
