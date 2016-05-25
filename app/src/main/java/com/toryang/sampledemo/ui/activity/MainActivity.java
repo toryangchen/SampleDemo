@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.toryang.sampledemo.R;
 import com.toryang.sampledemo.ui.BaseActivity;
 import com.toryang.sampledemo.ui.adapter.ViewpagerAdapter;

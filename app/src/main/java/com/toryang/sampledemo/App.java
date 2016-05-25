@@ -2,6 +2,7 @@ package com.toryang.sampledemo;
 
 import android.app.Application;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.squareup.picasso.Picasso;
 import com.toryang.sampledemo.common.OkHttp3Downloader;
 
@@ -24,6 +25,7 @@ public class App extends Application {
         super.onCreate();
         instace = this;
         setUpPicasso();
+        Fresco.initialize(this);
     }
 
     public void setUpPicasso(){

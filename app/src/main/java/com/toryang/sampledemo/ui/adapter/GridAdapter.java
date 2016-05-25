@@ -1,6 +1,8 @@
 package com.toryang.sampledemo.ui.adapter;
 
 import android.content.Context;
+import android.net.Uri;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.toryang.sampledemo.App;
 import com.toryang.sampledemo.R;
 import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
@@ -65,16 +68,20 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.GridViewHolder
     public void onBindViewHolder(GridViewHolder holder, int position) {
 //        log.d(position);
         if (usBoxEntity !=null){
-            App.getPicasso().with(mContext).load(usBoxEntity.getSubjects().get(position).getSubject().getImages().getLarge()).into(holder.imageView);
+//            App.getPicasso().with(mContext).load(usBoxEntity.getSubjects().get(position).getSubject().getImages().getLarge()).into(holder.imageView);
+            holder.simpleDraweeView.setImageURI(getUri(usBoxEntity.getSubjects().get(position).getSubject().getImages().getLarge()));
             holder.textView.setText(usBoxEntity.getSubjects().get(position).getSubject().getTitle());
         }else if (comingSoon != null){
-            App.getPicasso().with(mContext).load(comingSoon.getSubjects().get(position).getImages().getLarge()).into(holder.imageView);
+//            App.getPicasso().with(mContext).load(comingSoon.getSubjects().get(position).getImages().getLarge()).into(holder.imageView);
+            holder.simpleDraweeView.setImageURI(getUri(comingSoon.getSubjects().get(position).getImages().getLarge()));
             holder.textView.setText(comingSoon.getSubjects().get(position).getTitle());
         }else if (inThreatEntity != null){
-            App.getPicasso().with(mContext).load(inThreatEntity.getSubjects().get(position).getImages().getLarge()).into(holder.imageView);
+//            App.getPicasso().with(mContext).load(inThreatEntity.getSubjects().get(position).getImages().getLarge()).into(holder.imageView);
+            holder.simpleDraweeView.setImageURI(getUri(inThreatEntity.getSubjects().get(position).getImages().getLarge()));
             holder.textView.setText(inThreatEntity.getSubjects().get(position).getTitle());
         }else{
-            App.getPicasso().with(mContext).load(top250Entity.getSubjects().get(position).getImages().getLarge()).into(holder.imageView);
+//            App.getPicasso().with(mContext).load(top250Entity.getSubjects().get(position).getImages().getLarge()).into(holder.imageView);
+            holder.simpleDraweeView.setImageURI(getUri(top250Entity.getSubjects().get(position).getImages().getLarge()));
             holder.textView.setText(top250Entity.getSubjects().get(position).getTitle());
         }
     }
@@ -89,9 +96,9 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.GridViewHolder
     public class GridViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         @BindView(R.id.rl_cardview)
-        RelativeLayout mRlCardview;
+        CardView mRlCardview;
         @BindView(R.id.image_movie)
-        ImageView imageView;
+        SimpleDraweeView simpleDraweeView;
         @BindView(R.id.tv_movie_name)
         TextView textView;
 
@@ -107,5 +114,9 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.GridViewHolder
             }
 
         }
+    }
+
+    private Uri getUri(String uri){
+        return Uri.parse(uri);
     }
 }

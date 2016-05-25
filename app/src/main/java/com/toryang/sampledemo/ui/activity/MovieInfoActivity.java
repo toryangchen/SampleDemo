@@ -13,6 +13,7 @@ import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
 import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.ui.BaseActivity;
 import com.toryang.sampledemo.ui.adapter.GridAdapter;
+import com.toryang.sampledemo.ui.adapter.GridSpacingItemDecoration;
 import com.toryang.sampledemo.utils.Log;
 
 import butterknife.BindView;
@@ -35,7 +36,6 @@ public class MovieInfoActivity extends BaseActivity {
     public static void startActivity(Context context, UsBoxEntity usBoxEntity) {
         mUsBoxEntity = usBoxEntity;
         Intent intent = new Intent(context, MovieInfoActivity.class);
-
         context.startActivity(intent);
     }
 
@@ -67,8 +67,11 @@ public class MovieInfoActivity extends BaseActivity {
 
     @Override
     public void operateView() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3);
+        int spanCount = 3;
+        int spacing = 30;
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,spanCount);
         rvMovieinfo.setLayoutManager(gridLayoutManager);
+        rvMovieinfo.addItemDecoration(new GridSpacingItemDecoration(spanCount,spacing,true ));
         rvMovieinfo.setHasFixedSize(true);
         GridAdapter gridAdapter;
         if (mUsBoxEntity != null) {
@@ -85,6 +88,8 @@ public class MovieInfoActivity extends BaseActivity {
             mInThreatEntity = null;
         }
         rvMovieinfo.setAdapter(gridAdapter);
-
     }
+
+
+
 }

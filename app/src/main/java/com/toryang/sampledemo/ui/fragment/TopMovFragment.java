@@ -13,6 +13,7 @@ import com.toryang.sampledemo.entities.top250.Top250Entity;
 import com.toryang.sampledemo.presenter.Top250PresenterImpl;
 import com.toryang.sampledemo.ui.BaseFragment;
 import com.toryang.sampledemo.ui.adapter.GridAdapter;
+import com.toryang.sampledemo.ui.adapter.GridSpacingItemDecoration;
 import com.toryang.sampledemo.ui.view.TopDataView;
 
 import butterknife.BindView;
@@ -45,10 +46,12 @@ public class TopMovFragment extends BaseFragment implements TopDataView {
         return view;
     }
 
-
     @Override
     public void dataBack(Top250Entity top250Entity) {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),3);
+        int spaceCount = 3;
+        int spacing = 40;
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),spaceCount);
+        rvMovieinfo.addItemDecoration(new GridSpacingItemDecoration(spaceCount,spacing,true));
         rvMovieinfo.setLayoutManager(gridLayoutManager);
         rvMovieinfo.setHasFixedSize(true);
         GridAdapter adapter = new GridAdapter(getActivity(),top250Entity);
