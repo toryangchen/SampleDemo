@@ -11,11 +11,13 @@ import android.widget.TextView;
 
 import com.toryang.sampledemo.App;
 import com.toryang.sampledemo.R;
-import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
-import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
+import com.toryang.sampledemo.entities.movieEntitiy.Movieinfo;
+import com.toryang.sampledemo.entities.usbox.Subject;
 import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.ui.activity.GridMovieActivity;
 import com.toryang.sampledemo.utils.Log;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,21 +30,18 @@ public class OutRecyclerAdapter extends RecyclerView.Adapter<OutRecyclerAdapter.
 
     private Context mContext;
     private LayoutInflater mLayoutInflater;
-    private UsBoxEntity usBoxEntity;
-    private ComingSoon comingSoon;
-    private InThreatEntity inThreatEntity;
+//    private UsBoxEntity usBoxEntity;
+//    private ComingSoon comingSoon;
+//    private InThreatEntity inThreatEntity;
     private String[] title;
+    private List<Object> lists;
 
     public OutRecyclerAdapter(Context context,String[] title,
-                              UsBoxEntity usBoxEntity,
-                              ComingSoon comingSoon,
-                              InThreatEntity inThreatEntity) {
+                              List<Object> lists) {
         mContext = context;
         mLayoutInflater = LayoutInflater.from(context);
         this.title = title;
-        this.usBoxEntity = usBoxEntity;
-        this.comingSoon = comingSoon;
-        this.inThreatEntity = inThreatEntity;
+        this.lists = lists;
     }
 
     @Override
@@ -54,30 +53,25 @@ public class OutRecyclerAdapter extends RecyclerView.Adapter<OutRecyclerAdapter.
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        if (position == 0){
-            holder.tvHotmovie.setText(title[position]);
-            App.getPicasso().with(mContext).load(inThreatEntity.getSubjects().get(0).getImages().getLarge()).into(holder.imagePicOne);
-            App.getPicasso().with(mContext).load(inThreatEntity.getSubjects().get(1).getImages().getLarge()).into(holder.imagePicTwo);
-            App.getPicasso().with(mContext).load(inThreatEntity.getSubjects().get(2).getImages().getLarge()).into(holder.imagePicThree);
-            holder.tvMovieNameOne.setText(inThreatEntity.getSubjects().get(0).getTitle());
-            holder.tvMovieNameTwo.setText(inThreatEntity.getSubjects().get(1).getTitle());
-            holder.tvMovieNameThree.setText(inThreatEntity.getSubjects().get(2).getTitle());
-        }else if (position == 1){
-            holder.tvHotmovie.setText(title[position]);
-            App.getPicasso().with(mContext).load(comingSoon.getSubjects().get(0).getImages().getLarge()).into(holder.imagePicOne);
-            App.getPicasso().with(mContext).load(comingSoon.getSubjects().get(1).getImages().getLarge()).into(holder.imagePicTwo);
-            App.getPicasso().with(mContext).load(comingSoon.getSubjects().get(2).getImages().getLarge()).into(holder.imagePicThree);
-            holder.tvMovieNameOne.setText(comingSoon.getSubjects().get(0).getTitle());
-            holder.tvMovieNameTwo.setText(comingSoon.getSubjects().get(1).getTitle());
-            holder.tvMovieNameThree.setText(comingSoon.getSubjects().get(2).getTitle());
+        holder.tvHotmovie.setText(title[position]);
+        if (position == 2){
+            UsBoxEntity usBoxEntity = (UsBoxEntity) lists.get(position);
+            List<Subject> subject_ = usBoxEntity.getSubjects();
+            App.getPicasso().with(mContext).load(subject_.get(0).getSubject().getImages().getLarge()).into(holder.imagePicOne);
+            App.getPicasso().with(mContext).load(subject_.get(1).getSubject().getImages().getLarge()).into(holder.imagePicTwo);
+            App.getPicasso().with(mContext).load(subject_.get(2).getSubject().getImages().getLarge()).into(holder.imagePicThree);
+            holder.tvMovieNameOne.setText(subject_.get(0).getSubject().getTitle());
+            holder.tvMovieNameTwo.setText(subject_.get(1).getSubject().getTitle());
+            holder.tvMovieNameThree.setText(subject_.get(2).getSubject().getTitle());
         }else {
-            holder.tvHotmovie.setText(title[position]);
-            App.getPicasso().with(mContext).load(usBoxEntity.getSubjects().get(0).getSubject().getImages().getLarge()).into(holder.imagePicOne);
-            App.getPicasso().with(mContext).load(usBoxEntity.getSubjects().get(1).getSubject().getImages().getLarge()).into(holder.imagePicTwo);
-            App.getPicasso().with(mContext).load(usBoxEntity.getSubjects().get(2).getSubject().getImages().getLarge()).into(holder.imagePicThree);
-            holder.tvMovieNameOne.setText(usBoxEntity.getSubjects().get(0).getSubject().getTitle());
-            holder.tvMovieNameTwo.setText(usBoxEntity.getSubjects().get(1).getSubject().getTitle());
-            holder.tvMovieNameThree.setText(usBoxEntity.getSubjects().get(2).getSubject().getTitle());
+            Movieinfo movieinfo = (Movieinfo)lists.get(position);
+            List<com.toryang.sampledemo.entities.movieEntitiy.Subject> subjects = movieinfo.getSubjects();
+            App.getPicasso().with(mContext).load(subjects.get(0).getImages().getLarge()).into(holder.imagePicOne);
+            App.getPicasso().with(mContext).load(subjects.get(1).getImages().getLarge()).into(holder.imagePicTwo);
+            App.getPicasso().with(mContext).load(subjects.get(2).getImages().getLarge()).into(holder.imagePicThree);
+            holder.tvMovieNameOne.setText(subjects.get(0).getTitle());
+            holder.tvMovieNameTwo.setText(subjects.get(1).getTitle());
+            holder.tvMovieNameThree.setText(subjects.get(2).getTitle());
         }
         MyClickListener myClickListener = new MyClickListener(position);
         holder.mLoadMore.setOnClickListener(myClickListener);
@@ -95,22 +89,14 @@ public class OutRecyclerAdapter extends RecyclerView.Adapter<OutRecyclerAdapter.
         }
         @Override
         public void onClick(View v) {
-            if (position == 0){
+            if (position == 2){
                 if (v.getId() == R.id.load_more){
-                    log.d(position);
-                    GridMovieActivity.startActivity(mContext,inThreatEntity);
+                    GridMovieActivity.startActivity(mContext,(UsBoxEntity) lists.get(position));
                 }
 
-            }else if (position == 1){
+            } else {
                 if (v.getId() == R.id.load_more){
-                    log.d(position);
-                    GridMovieActivity.startActivity(mContext,comingSoon);
-                }
-
-            }else {
-                if (v.getId() == R.id.load_more){
-                    log.d(position);
-                    GridMovieActivity.startActivity(mContext,usBoxEntity);
+                    GridMovieActivity.startActivity(mContext,(Movieinfo) lists.get(position));
                 }
             }
         }

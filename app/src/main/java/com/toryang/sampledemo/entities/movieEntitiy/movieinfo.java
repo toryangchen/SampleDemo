@@ -1,5 +1,5 @@
 
-package com.toryang.sampledemo.entities.top250;
+package com.toryang.sampledemo.entities.movieEntitiy;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Top250Entity {
+public class Movieinfo {
 
     @SerializedName("count")
     @Expose
@@ -18,6 +18,7 @@ public class Top250Entity {
     @SerializedName("total")
     @Expose
     private Integer total;
+
     @SerializedName("subjects")
     @Expose
     private List<Subject> subjects = new ArrayList<Subject>();
@@ -25,28 +26,6 @@ public class Top250Entity {
     @Expose
     private String title;
 
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public Top250Entity() {
-    }
-
-    /**
-     * 
-     * @param total
-     * @param title
-     * @param count
-     * @param subjects
-     * @param start
-     */
-    public Top250Entity(Integer count, Integer start, Integer total, List<Subject> subjects, String title) {
-        this.count = count;
-        this.start = start;
-        this.total = total;
-        this.subjects = subjects;
-        this.title = title;
-    }
 
     /**
      * 
@@ -114,7 +93,7 @@ public class Top250Entity {
     /**
      * 
      * @param subjects
-     *     The subjects
+     *     The subject
      */
     public void setSubjects(List<Subject> subjects) {
         this.subjects = subjects;
@@ -137,5 +116,6 @@ public class Top250Entity {
     public void setTitle(String title) {
         this.title = title;
     }
+
 
 }

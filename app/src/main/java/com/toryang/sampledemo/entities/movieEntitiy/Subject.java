@@ -1,5 +1,5 @@
 
-package com.toryang.sampledemo.entities.inthreat;
+package com.toryang.sampledemo.entities.movieEntitiy;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -47,7 +47,7 @@ public class Subject {
     private String id;
 
     /**
-     * 
+     *
      * @return
      *     The rating
      */
@@ -56,7 +56,7 @@ public class Subject {
     }
 
     /**
-     * 
+     *
      * @param rating
      *     The rating
      */
@@ -65,7 +65,7 @@ public class Subject {
     }
 
     /**
-     * 
+     *
      * @return
      *     The genres
      */
@@ -74,7 +74,7 @@ public class Subject {
     }
 
     /**
-     * 
+     *
      * @param genres
      *     The genres
      */
@@ -83,7 +83,7 @@ public class Subject {
     }
 
     /**
-     * 
+     *
      * @return
      *     The title
      */
@@ -92,7 +92,7 @@ public class Subject {
     }
 
     /**
-     * 
+     *
      * @param title
      *     The title
      */
@@ -101,7 +101,7 @@ public class Subject {
     }
 
     /**
-     * 
+     *
      * @return
      *     The casts
      */
@@ -110,7 +110,7 @@ public class Subject {
     }
 
     /**
-     * 
+     *
      * @param casts
      *     The casts
      */
@@ -119,7 +119,7 @@ public class Subject {
     }
 
     /**
-     * 
+     *
      * @return
      *     The collectCount
      */
@@ -128,7 +128,7 @@ public class Subject {
     }
 
     /**
-     * 
+     *
      * @param collectCount
      *     The collect_count
      */
@@ -137,7 +137,7 @@ public class Subject {
     }
 
     /**
-     * 
+     *
      * @return
      *     The originalTitle
      */
@@ -146,7 +146,7 @@ public class Subject {
     }
 
     /**
-     * 
+     *
      * @param originalTitle
      *     The original_title
      */
@@ -155,7 +155,7 @@ public class Subject {
     }
 
     /**
-     * 
+     *
      * @return
      *     The subtype
      */
@@ -164,7 +164,7 @@ public class Subject {
     }
 
     /**
-     * 
+     *
      * @param subtype
      *     The subtype
      */
@@ -173,7 +173,7 @@ public class Subject {
     }
 
     /**
-     * 
+     *
      * @return
      *     The directors
      */

@@ -12,7 +12,8 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 import com.toryang.sampledemo.App;
 import com.toryang.sampledemo.R;
-import com.toryang.sampledemo.entities.comingSoon.Subject;
+
+import com.toryang.sampledemo.entities.movieEntitiy.Subject;
 import com.toryang.sampledemo.entities.usbox.Subject_;
 import com.toryang.sampledemo.ui.BaseActivity;
 
@@ -26,9 +27,8 @@ public class MovieInfoActivity extends BaseActivity {
 
 
     public static Subject_ mUsBoxSubject;
-    public static Subject mComingSoonSuject;
-    public static com.toryang.sampledemo.entities.inthreat.Subject mInThreatSubject;
-    public static com.toryang.sampledemo.entities.top250.Subject mTop250Subject;
+    public static Subject subject;
+
     Picasso picasso = App.getPicasso();
 
 
@@ -38,23 +38,13 @@ public class MovieInfoActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
-    public static void startActivity(Context context, Subject ComingSoonSuject) {
-        mComingSoonSuject = ComingSoonSuject;
+    public static void startActivity(Context context, Subject movieSubject) {
+        subject = movieSubject;
         Intent intent = new Intent(context, MovieInfoActivity.class);
         context.startActivity(intent);
     }
 
-    public static void startActivity(Context context, com.toryang.sampledemo.entities.inthreat.Subject inThreatSubject) {
-        mInThreatSubject = inThreatSubject;
-        Intent intent = new Intent(context, MovieInfoActivity.class);
-        context.startActivity(intent);
-    }
 
-    public static void startActivity(Context context, com.toryang.sampledemo.entities.top250.Subject top250Subject) {
-        mTop250Subject = top250Subject;
-        Intent intent = new Intent(context, MovieInfoActivity.class);
-        context.startActivity(intent);
-    }
 
     @BindView(R.id.image)
     ImageView image;
@@ -78,15 +68,9 @@ public class MovieInfoActivity extends BaseActivity {
         if (mUsBoxSubject != null){
             collapsingToolbar.setTitle(mUsBoxSubject.getTitle());
             picasso.with(this).load(mUsBoxSubject.getImages().getLarge()).into(image);
-        }else if (mComingSoonSuject != null){
-            collapsingToolbar.setTitle(mComingSoonSuject.getTitle());
-            picasso.with(this).load(mComingSoonSuject.getImages().getLarge()).into(image);
-        }else if (mInThreatSubject != null){
-            collapsingToolbar.setTitle(mInThreatSubject.getTitle());
-            picasso.with(this).load(mInThreatSubject.getImages().getLarge()).into(image);
         }else {
-            collapsingToolbar.setTitle(mTop250Subject.getTitle());
-            picasso.with(this).load(mTop250Subject.getImages().getLarge()).into(image);
+            collapsingToolbar.setTitle(subject.getTitle());
+            picasso.with(this).load(subject.getImages().getLarge()).into(image);
         }
 
     }
@@ -104,9 +88,6 @@ public class MovieInfoActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         mUsBoxSubject = null;
-        mComingSoonSuject = null;
-        mInThreatSubject = null;
-        mTop250Subject = null;
-
+        subject = null;
     }
 }

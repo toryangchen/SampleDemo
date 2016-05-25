@@ -7,14 +7,11 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.toryang.sampledemo.api.InitRetrofit;
 import com.toryang.sampledemo.api.NetService;
 import com.toryang.sampledemo.config.IPAddress;
-import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
-import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
-import com.toryang.sampledemo.entities.top250.Top250Entity;
+import com.toryang.sampledemo.entities.movieEntitiy.Movieinfo;
 import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.ui.view.DataView;
 import com.toryang.sampledemo.utils.Log;
@@ -38,8 +35,7 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
     Context context;
 
     UsBoxEntity usBoxentity;
-    ComingSoon comingSoonEntity;
-    InThreatEntity inThreatentity;
+    Movieinfo comingSoonEntity,inThreatentity;
     public HotMoviePresenterImpl(Context context){
         this.context = context;
     }
@@ -93,7 +89,7 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
                 .getInTheaters()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<InThreatEntity>() {
+                .subscribe(new Observer<Movieinfo>() {
                     @Override
                     public void onCompleted() {
                         USBOX_FINISHED = true;
@@ -109,7 +105,7 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
                     }
 
                     @Override
-                    public void onNext(InThreatEntity inThreatEntity ) {
+                    public void onNext(Movieinfo inThreatEntity ) {
                         inThreatentity = inThreatEntity;
 
                     }
@@ -122,7 +118,7 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
                 .getComingSoon()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ComingSoon>() {
+                .subscribe(new Observer<Movieinfo>() {
                     @Override
                     public void onCompleted() {
                         log.d("finished");
@@ -138,7 +134,7 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
                     }
 
                     @Override
-                    public void onNext(ComingSoon comingSoon) {
+                    public void onNext(Movieinfo comingSoon) {
                         comingSoonEntity = comingSoon;
                     }
                 });

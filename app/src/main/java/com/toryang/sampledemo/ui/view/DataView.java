@@ -1,7 +1,6 @@
 package com.toryang.sampledemo.ui.view;
 
-import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
-import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
+import com.toryang.sampledemo.entities.movieEntitiy.Movieinfo;
 import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
 
 /**
@@ -9,6 +8,6 @@ import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
  */
 public interface DataView extends MvpView {
 
-    void loadData(UsBoxEntity usBoxEntity, ComingSoon comingSoon, InThreatEntity inThreatEntity);
+    void loadData(UsBoxEntity usBoxEntity, Movieinfo comingSoon, Movieinfo inThreatEntity);
 
 }

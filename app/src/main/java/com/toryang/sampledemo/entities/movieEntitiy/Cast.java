@@ -1,5 +1,5 @@
 
-package com.toryang.sampledemo.entities.inthreat;
+package com.toryang.sampledemo.entities.movieEntitiy;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -20,7 +20,7 @@ public class Cast {
     private String id;
 
     /**
-     * 
+     *
      * @return
      *     The alt
      */
@@ -29,7 +29,7 @@ public class Cast {
     }
 
     /**
-     * 
+     *
      * @param alt
      *     The alt
      */
@@ -38,7 +38,7 @@ public class Cast {
     }
 
     /**
-     * 
+     *
      * @return
      *     The avatars
      */
@@ -47,7 +47,7 @@ public class Cast {
     }
 
     /**
-     * 
+     *
      * @param avatars
      *     The avatars
      */

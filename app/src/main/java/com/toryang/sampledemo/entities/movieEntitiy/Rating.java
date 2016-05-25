@@ -1,5 +1,5 @@
 
-package com.toryang.sampledemo.entities.comingSoon;
+package com.toryang.sampledemo.entities.movieEntitiy;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -18,27 +18,6 @@ public class Rating {
     @SerializedName("min")
     @Expose
     private Integer min;
-
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public Rating() {
-    }
-
-    /**
-     * 
-     * @param min
-     * @param max
-     * @param stars
-     * @param average
-     */
-    public Rating(Integer max, Double average, String stars, Integer min) {
-        this.max = max;
-        this.average = average;
-        this.stars = stars;
-        this.min = min;
-    }
 
     /**
      * 

@@ -1,5 +1,5 @@
 
-package com.toryang.sampledemo.entities.inthreat;
+package com.toryang.sampledemo.entities.movieEntitiy;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

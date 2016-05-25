@@ -7,22 +7,21 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 
-import com.toryang.sampledemo.App;
 import com.toryang.sampledemo.R;
-import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
-import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
+import com.toryang.sampledemo.entities.movieEntitiy.Movieinfo;
 import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.presenter.HotMoviePresenterImpl;
 import com.toryang.sampledemo.ui.BaseFragment;
 import com.toryang.sampledemo.ui.adapter.OutRecyclerAdapter;
 import com.toryang.sampledemo.ui.view.DataView;
 import com.toryang.sampledemo.utils.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindArray;
 import butterknife.BindView;
@@ -51,6 +50,7 @@ public class HotMovieFragment extends BaseFragment implements DataView {
     private HotMoviePresenterImpl presenter;
     private OutRecyclerAdapter mAdapter;
 
+    List<Object> lists = new ArrayList<>();
     Log log = Log.YLog();
 
     @Override
@@ -86,9 +86,12 @@ public class HotMovieFragment extends BaseFragment implements DataView {
      */
 
     @Override
-    public void loadData(UsBoxEntity usBoxEntity, ComingSoon comingSoon, InThreatEntity inThreatEntity) {
+    public void loadData(UsBoxEntity usBoxEntity, Movieinfo comingSoon, Movieinfo inThreatEntity) {
 //        log.d(usBoxEntity.getTitle()+":"+comingSoon.getTitle()+":"+inThreatEntity.getTitle());
-        mAdapter = new OutRecyclerAdapter(getActivity(),title,usBoxEntity,comingSoon,inThreatEntity);
+        lists.add(0,inThreatEntity);
+        lists.add(1,comingSoon);
+        lists.add(2,usBoxEntity);
+        mAdapter = new OutRecyclerAdapter(getActivity(),title,lists);
 //        imageUri[0] = usBoxEntity.getSubjects().get(0).getSubject().getImages().getLarge();
         recyclerMovie.setAdapter(mAdapter);
 

@@ -1,10 +1,10 @@
 
-package com.toryang.sampledemo.entities.top250;
+package com.toryang.sampledemo.entities.movieEntitiy;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Images {
+public class Avatars {
 
     @SerializedName("small")
     @Expose
@@ -15,25 +15,6 @@ public class Images {
     @SerializedName("medium")
     @Expose
     private String medium;
-
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public Images() {
-    }
-
-    /**
-     * 
-     * @param small
-     * @param medium
-     * @param large
-     */
-    public Images(String small, String large, String medium) {
-        this.small = small;
-        this.large = large;
-        this.medium = medium;
-    }
 
     /**
      * 

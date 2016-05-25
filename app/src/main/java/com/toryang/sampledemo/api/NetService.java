@@ -1,8 +1,6 @@
 package com.toryang.sampledemo.api;
 
-import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
-import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
-import com.toryang.sampledemo.entities.top250.Top250Entity;
+import com.toryang.sampledemo.entities.movieEntitiy.Movieinfo;
 import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
 
 import retrofit2.http.GET;
@@ -17,14 +15,13 @@ public interface NetService {
     Observable<UsBoxEntity> getHotMovie();
 
     @GET("/v2/movie/in_theaters")
-    Observable<InThreatEntity> getInTheaters ();
+    Observable<Movieinfo> getInTheaters ();
 
     @GET("/v2/movie/coming_soon")
-    Observable<ComingSoon> getComingSoon();
-
+    Observable<Movieinfo> getComingSoon();
 
     @GET("/v2/movie/top250")
-    Observable<Top250Entity> getTop250();
+    Observable<Movieinfo> getTop250();
 
 
 }

@@ -10,8 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.toryang.sampledemo.R;
-import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
-import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
+import com.toryang.sampledemo.entities.movieEntitiy.Movieinfo;
 import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
 import com.toryang.sampledemo.ui.BaseActivity;
 import com.toryang.sampledemo.ui.adapter.GridAdapter;
@@ -31,8 +30,7 @@ public class GridMovieActivity extends BaseActivity {
     Log log = Log.YLog();
 
     public static   UsBoxEntity mUsBoxEntity;
-    public static   ComingSoon mComingSoon;
-    public static InThreatEntity mInThreatEntity;
+    public static Movieinfo mMovieinfo;
 
     @BindView(R.id.rv_movieinfo)
     RecyclerView rvMovieinfo;
@@ -45,14 +43,8 @@ public class GridMovieActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
-    public static void startActivity(Context context, ComingSoon comingSoon) {
-        mComingSoon = comingSoon;
-        Intent intent = new Intent(context, GridMovieActivity.class);
-        context.startActivity(intent);
-    }
-
-    public static void startActivity(Context context, InThreatEntity inThreatEntity) {
-        mInThreatEntity = inThreatEntity;
+    public static void startActivity(Context context, Movieinfo movieinfo) {
+        mMovieinfo = movieinfo;
         Intent intent = new Intent(context, GridMovieActivity.class);
         context.startActivity(intent);
     }
@@ -79,15 +71,13 @@ public class GridMovieActivity extends BaseActivity {
         rvMovieinfo.addItemDecoration(new GridSpacingItemDecoration(spanCount,spacing,true ));
         rvMovieinfo.setHasFixedSize(true);
         final GridAdapter gridAdapter;
+
         if (mUsBoxEntity != null) {
             gridAdapter= new GridAdapter(this,mUsBoxEntity);
-            getSupportActionBar().setTitle(movie[2]);
-        } else if (mComingSoon != null) {
-            gridAdapter = new GridAdapter(this,mComingSoon);
-            getSupportActionBar().setTitle(movie[1]);
+            getSupportActionBar().setTitle(mUsBoxEntity.getTitle());
         } else {
-            gridAdapter = new GridAdapter(this,mInThreatEntity);
-            getSupportActionBar().setTitle(movie[0]);
+            gridAdapter = new GridAdapter(this,mMovieinfo);
+            getSupportActionBar().setTitle(mMovieinfo.getTitle());
         }
         rvMovieinfo.setAdapter(gridAdapter);
         rvMovieinfo.addOnItemTouchListener(new GridItemClick(this,new GridItemClick.OnItemClickListener(){
@@ -95,10 +85,8 @@ public class GridMovieActivity extends BaseActivity {
                     public void onItemClick(View view, int position) {
                         if (mUsBoxEntity != null) {
                             MovieInfoActivity.startActivity(GridMovieActivity.this,mUsBoxEntity.getSubjects().get(position).getSubject());
-                        } else if (mComingSoon != null) {
-                            MovieInfoActivity.startActivity(GridMovieActivity.this,mComingSoon.getSubjects().get(position));
                         } else {
-                            MovieInfoActivity.startActivity(GridMovieActivity.this,mInThreatEntity.getSubjects().get(position));
+                            MovieInfoActivity.startActivity(GridMovieActivity.this,mMovieinfo.getSubjects().get(position));
                         }
                     }
                 })
@@ -120,7 +108,6 @@ public class GridMovieActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         mUsBoxEntity = null;
-        mComingSoon = null;
-        mInThreatEntity = null;
+        mMovieinfo = null;
     }
 }

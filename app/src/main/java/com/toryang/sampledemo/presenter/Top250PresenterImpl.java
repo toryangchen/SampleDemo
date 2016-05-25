@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.toryang.sampledemo.api.InitRetrofit;
 import com.toryang.sampledemo.api.NetService;
-import com.toryang.sampledemo.entities.top250.Top250Entity;
+import com.toryang.sampledemo.entities.movieEntitiy.Movieinfo;
 import com.toryang.sampledemo.ui.view.TopDataView;
 import com.toryang.sampledemo.utils.Log;
 
@@ -38,7 +38,7 @@ public class Top250PresenterImpl extends BasePresenter<TopDataView> {
                 .getTop250()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Top250Entity>() {
+                .subscribe(new Observer<Movieinfo>() {
                     @Override
                     public void onCompleted() {
                         log.d("finished");
@@ -50,7 +50,7 @@ public class Top250PresenterImpl extends BasePresenter<TopDataView> {
                     }
 
                     @Override
-                    public void onNext(Top250Entity top250Entity) {
+                    public void onNext(Movieinfo top250Entity) {
                         getMvpView().dataBack(top250Entity);
                     }
                 });

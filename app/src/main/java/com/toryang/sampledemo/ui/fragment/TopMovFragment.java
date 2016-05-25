@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.toryang.sampledemo.R;
-import com.toryang.sampledemo.entities.top250.Top250Entity;
+import com.toryang.sampledemo.entities.movieEntitiy.Movieinfo;
 import com.toryang.sampledemo.presenter.Top250PresenterImpl;
 import com.toryang.sampledemo.ui.BaseFragment;
 import com.toryang.sampledemo.ui.activity.MovieInfoActivity;
@@ -48,7 +48,7 @@ public class TopMovFragment extends BaseFragment implements TopDataView {
     }
 
     @Override
-    public void dataBack(final Top250Entity top250Entity) {
+    public void dataBack(final Movieinfo top250Entity) {
         int spaceCount = 3;
         int spacing = 40;
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),spaceCount);
