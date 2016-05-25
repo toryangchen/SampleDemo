@@ -41,7 +41,7 @@ public class TopMovFragment extends BaseFragment implements TopDataView {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_movieinfo, container, false);
+        View view = inflater.inflate(R.layout.activity_gridmovie, container, false);
         ButterKnife.bind(this, view);
         return view;
     }

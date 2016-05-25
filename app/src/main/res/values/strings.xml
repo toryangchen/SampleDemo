@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">SampleDemo</string>
+    <string name="app_name">豆瓣电影Api</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
 
     <string name="movie_title1">热门电影</string>
     <string name="movie_title2">近期上映</string>

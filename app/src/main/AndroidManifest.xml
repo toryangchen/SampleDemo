@@ -24,8 +24,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.activity.GridMovieActivity"/>
 
-        <activity android:name=".ui.activity.MovieInfoActivity"/>
+        <activity android:name=".ui.activity.MovieInfoActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

@@ -22,6 +22,7 @@ import com.toryang.sampledemo.ui.fragment.HotMovieFragment;
 import com.toryang.sampledemo.ui.fragment.TopMovFragment;
 
 import butterknife.BindArray;
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -36,6 +37,7 @@ public class MainActivity extends BaseActivity
     @BindView(R.id.nav_view)NavigationView navigationView;
 
     @BindArray(R.array.tab_titles)String[] strs;
+    @BindString(R.string.app_name)String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class MainActivity extends BaseActivity
 
     public void operateView() {
         setSupportActionBar(toolbar);
+        toolbar.setTitle(name);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,9 +62,7 @@ public class MainActivity extends BaseActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         navigationView.setNavigationItemSelectedListener(this);
-
         if (mViewpagerTab != null){
             setUpViewPager(mViewpagerTab);
         }

@@ -14,7 +14,7 @@ import com.toryang.sampledemo.R;
 import com.toryang.sampledemo.entities.comingSoon.ComingSoon;
 import com.toryang.sampledemo.entities.inthreat.InThreatEntity;
 import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
-import com.toryang.sampledemo.ui.activity.MovieInfoActivity;
+import com.toryang.sampledemo.ui.activity.GridMovieActivity;
 import com.toryang.sampledemo.utils.Log;
 
 import butterknife.BindView;
@@ -98,19 +98,19 @@ public class OutRecyclerAdapter extends RecyclerView.Adapter<OutRecyclerAdapter.
             if (position == 0){
                 if (v.getId() == R.id.load_more){
                     log.d(position);
-                    MovieInfoActivity.startActivity(mContext,inThreatEntity);
+                    GridMovieActivity.startActivity(mContext,inThreatEntity);
                 }
 
             }else if (position == 1){
                 if (v.getId() == R.id.load_more){
                     log.d(position);
-                    MovieInfoActivity.startActivity(mContext,comingSoon);
+                    GridMovieActivity.startActivity(mContext,comingSoon);
                 }
 
             }else {
                 if (v.getId() == R.id.load_more){
                     log.d(position);
-                    MovieInfoActivity.startActivity(mContext,usBoxEntity);
+                    GridMovieActivity.startActivity(mContext,usBoxEntity);
                 }
             }
         }
