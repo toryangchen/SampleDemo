@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.toryang.sampledemo.R;
 import com.toryang.sampledemo.entities.movieEntitiy.Movieinfo;
+import com.toryang.sampledemo.loading.MyLoading;
 import com.toryang.sampledemo.presenter.Top250PresenterImpl;
 import com.toryang.sampledemo.ui.BaseFragment;
 import com.toryang.sampledemo.ui.activity.MovieInfoActivity;
@@ -28,22 +29,20 @@ public class TopMovFragment extends BaseFragment implements TopDataView {
 
     @BindView(R.id.rv_movieinfo)
     RecyclerView rvMovieinfo;
+    @BindView(R.id.loading)
+    MyLoading loading;
 
     private Top250PresenterImpl presenter;
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        presenter = new Top250PresenterImpl(getActivity());
-        presenter.attachView(this);
-        presenter.getTop250();
-    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_gridmovie, container, false);
         ButterKnife.bind(this, view);
+        setMyLoading(loading);
+        presenter = new Top250PresenterImpl(getActivity());
+        presenter.attachView(this);
+        presenter.getTop250();
         return view;
     }
 

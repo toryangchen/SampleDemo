@@ -10,6 +10,7 @@ import com.toryang.sampledemo.utils.Log;
 
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
 import rx.schedulers.Schedulers;
 
 /**
@@ -37,11 +38,17 @@ public class Top250PresenterImpl extends BasePresenter<TopDataView> {
         InitRetrofit.createApi(NetService.class)
                 .getTop250()
                 .subscribeOn(Schedulers.io())
+                .doOnSubscribe(new Action0() {
+                    @Override
+                    public void call() {
+                        getMvpView().startLoading();
+                    }
+                })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Movieinfo>() {
                     @Override
                     public void onCompleted() {
-                        log.d("finished");
+                        getMvpView().hideLoading();
                     }
 
                     @Override

@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
 import rx.schedulers.Schedulers;
 
 /**
@@ -51,6 +52,7 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
     }
 
     public void loadData(){
+        getMvpView().startLoading();
         usBoxMovie();
         loadUsBox();
         recentMovie();
@@ -143,6 +145,7 @@ public class HotMoviePresenterImpl extends BasePresenter<DataView>{
     public void update(){
         if (USBOX_FINISHED && RECENT_FINISHED && HOTMO_FINISHED){
             getMvpView().loadData(usBoxentity,comingSoonEntity,inThreatentity);
+            getMvpView().hideLoading();
         }
     }
 

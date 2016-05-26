@@ -8,4 +8,5 @@ import com.toryang.sampledemo.entities.movieEntitiy.Movieinfo;
 public interface TopDataView extends MvpView {
 
     void dataBack(Movieinfo top250Entity);
+
 }

@@ -1,12 +1,9 @@
 package com.toryang.sampledemo.ui;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
+import com.toryang.sampledemo.loading.MyLoading;
 import com.toryang.sampledemo.ui.view.MvpView;
 
 /**
@@ -14,15 +11,20 @@ import com.toryang.sampledemo.ui.view.MvpView;
  */
 public class BaseFragment extends Fragment implements MvpView {
 
+    MyLoading myLoading;
 
+    public void setMyLoading(MyLoading myLoading) {
+        this.myLoading = myLoading;
+    }
     @Override
     public void startLoading() {
-
+        myLoading.start();
     }
 
     @Override
     public void hideLoading() {
-
+        myLoading.stop();
+        myLoading.setVisibility(View.GONE);
     }
 
     @Override

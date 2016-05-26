@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import com.toryang.sampledemo.R;
 import com.toryang.sampledemo.entities.movieEntitiy.Movieinfo;
 import com.toryang.sampledemo.entities.usbox.UsBoxEntity;
+import com.toryang.sampledemo.loading.MyLoading;
 import com.toryang.sampledemo.presenter.HotMoviePresenterImpl;
 import com.toryang.sampledemo.ui.BaseFragment;
 import com.toryang.sampledemo.ui.adapter.OutRecyclerAdapter;
@@ -36,32 +37,21 @@ import rx.schedulers.Schedulers;
  */
 public class HotMovieFragment extends BaseFragment implements DataView {
 
-//    @BindView(R.id.roll_view_pager)
-//    RollPagerView mRollViewPager;
     @BindView(R.id.recycler_movie)
     RecyclerView recyclerMovie;
+    @BindView(R.id.loading)
+    MyLoading loading;
+
     @BindArray(R.array.movie_title)
     String[] title;
 
-    @BindView(R.id.image_pic)
-    ImageView imageView;
 
-    String[] imageUri = new String[3];
     private HotMoviePresenterImpl presenter;
     private OutRecyclerAdapter mAdapter;
 
     List<Object> lists = new ArrayList<>();
     Log log = Log.YLog();
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        presenter = new HotMoviePresenterImpl(getActivity());
-        presenter.attachView(this);
-        presenter.loadData();
-//        presenter.loadHotMovieWithVolley();
-
-    }
 
     @Nullable
     @Override
@@ -74,6 +64,12 @@ public class HotMovieFragment extends BaseFragment implements DataView {
     }
 
     public void operateView() {
+        setMyLoading(loading);
+        presenter = new HotMoviePresenterImpl(getActivity());
+        presenter.attachView(this);
+        presenter.loadData();
+
+        //        presenter.loadHotMovieWithVolley();
 //        mRollViewPager.setPlayDelay(1000);
 //        mRollViewPager.setAnimationDurtion(500);
 //        mRollViewPager.setAdapter(new LoopAdapter(getActivity(),mRollViewPager,imageUri));
@@ -84,10 +80,10 @@ public class HotMovieFragment extends BaseFragment implements DataView {
     /**
      * Presenter 的回调接口，用于更新UI
      */
-
     @Override
     public void loadData(UsBoxEntity usBoxEntity, Movieinfo comingSoon, Movieinfo inThreatEntity) {
 //        log.d(usBoxEntity.getTitle()+":"+comingSoon.getTitle()+":"+inThreatEntity.getTitle());
+//        loading.stop();
         lists.add(0,inThreatEntity);
         lists.add(1,comingSoon);
         lists.add(2,usBoxEntity);
@@ -115,7 +111,7 @@ public class HotMovieFragment extends BaseFragment implements DataView {
 
                     @Override
                     public void onNext(Bitmap s) {
-                        imageView.setImageDrawable(new BitmapDrawable(getResources(),s));
+//                        imageView.setImageDrawable(new BitmapDrawable(getResources(),s));
                         log.d(s);
                     }
                 });
