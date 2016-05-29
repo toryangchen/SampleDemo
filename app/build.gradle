@@ -5,6 +5,14 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
 
+    signingConfigs {
+        release {
+            storeFile file("SampleDemo.jks")
+            storePassword "123456"
+            keyAlias "Demo"
+            keyPassword "123456"
+        }
+    }
     defaultConfig {
         applicationId "com.toryang.sampledemo"
         minSdkVersion 15
@@ -13,8 +21,12 @@ android {
         versionName "1.0"
     }
     buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+        }
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.release
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

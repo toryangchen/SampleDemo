@@ -3,6 +3,4 @@
     <declare-styleable name="SingleBall">
         <attr name="single_ball_color" format="color"/>
     </declare-styleable>
-    
-    
 </resources>
