@@ -2,7 +2,6 @@
 
 MVP project Demo with some open Source Tools
 
-keep going......
 
 [原文链接](http://www.jianshu.com/p/a58d15ef5c8b)
 
@@ -12,7 +11,7 @@ keep going......
 [第一篇：开发环境篇](http://www.jianshu.com/p/b20c9c6993f5)  
 [第二篇：材料设计篇](http://www.jianshu.com/p/47b81f3a0b31)  
 [第三篇：规范开发篇](http://www.jianshu.com/p/be0d9c0908f2)  
-第四篇：从项目开发到上架篇（篇章调整，最后更新）  
+[第四篇：从项目开发到上架篇](http://www.jianshu.com/p/8b0483510bf9)（篇章调整，最后更新）  
 
 **进阶篇：**  
 [第五篇：设计模式篇](http://www.jianshu.com/p/fa92ca51bdb0)  
@@ -24,7 +23,7 @@ keep going......
 
 **高阶篇：**  
 [第十篇：自定义控件篇](http://www.jianshu.com/p/2266c6b82cb3)  
-第十一篇：跨进程篇  
+[第十一篇：跨进程篇](http://www.jianshu.com/p/a4a5ca43ce97)  
 
 ##关于Demo##  
  *  写这个系列的文章的同时，也在做一个小Demo。功能很简单，利用豆瓣电影Api实现一款基于Android的电影集合的App。[star me on GitHub！](https://github.com/ToryangChen/SampleDemo)  
