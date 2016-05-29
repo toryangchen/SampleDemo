@@ -26,7 +26,7 @@ keep going......
 [第十篇：自定义控件篇](http://www.jianshu.com/p/2266c6b82cb3)  
 第十一篇：跨进程篇  
 
-##关于Demo##  
+##关于Demo  
  *  写这个系列的文章的同时，也在做一个小Demo。功能很简单，利用豆瓣电影Api实现一款基于Android的电影集合的App。[star me on GitHub！](https://github.com/ToryangChen/SampleDemo)  
 
 * 该项目的数据源来自于[豆瓣](https://developers.douban.com/wiki/?title=guide)；   
@@ -37,7 +37,7 @@ keep going......
 
 ![Demo.png](http://upload-images.jianshu.io/upload_images/533504-9cc42282dabe92d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-##最后的话##  
+##最后的话  
 
 该系列的文章对Android开发的内容涉及较广，从最基础的开发工具的使用到项目的打包发布，从Android材料设计到网络开发，从数据库的应用到自定义控件。本文也许不能面面俱到地将Android开发的内容全部罗列，但是这一定是对初学者的一份学习大纲。如果读者对其他方面的开发内容有需求，可以在评论留言，我将整理出来分享给大家。感谢大家的支持！
 
