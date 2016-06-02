@@ -94,28 +94,28 @@ public class HotMovieFragment extends BaseFragment implements DataView {
     }
 
 
-    public void downLoadImage(Observable<Bitmap> observable){
-        observable.subscribeOn(Schedulers.io())
-                .onBackpressureBuffer()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Bitmap>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        log.e(e.toString());
-                    }
-
-                    @Override
-                    public void onNext(Bitmap s) {
-//                        imageView.setImageDrawable(new BitmapDrawable(getResources(),s));
-                        log.d(s);
-                    }
-                });
-    }
+//    public void downLoadImage(Observable<Bitmap> observable){
+//        observable.subscribeOn(Schedulers.io())
+//                .onBackpressureBuffer()
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Subscriber<Bitmap>() {
+//                    @Override
+//                    public void onCompleted() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        log.e(e.toString());
+//                    }
+//
+//                    @Override
+//                    public void onNext(Bitmap s) {
+////                        imageView.setImageDrawable(new BitmapDrawable(getResources(),s));
+//                        log.d(s);
+//                    }
+//                });
+//    }
 
 
 
